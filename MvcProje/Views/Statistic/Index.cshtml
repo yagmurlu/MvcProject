@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>İSTATİSTİK</h2>
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="small-box bg-gradient-navy">
+            <div class="inner" style="text-align: center">
+                <br />
+                <h5>Toplam Kategori Sayısı</h5>
+                <h4>@ViewBag.totalCategories</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="small-box bg-gradient-danger">
+            <div class="inner" style="text-align: center">
+                <br />
+                <h5>Yazılım Kategorisindeki Başlık Sayısı</h5>
+                <h4>@ViewBag.softwareCategoryTitleNumber</h4>
+            </div>@*<a href="#" class="small-box-footer"></a>*@
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="small-box bg-gray-dark">
+            <div class="inner" style="text-align: center">
+                <br />
+                <h5>Yazar Adı İçinde 'a' harfi Geçenler</h5>
+                <h4>@ViewBag.nameWriter</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="small-box bg-blue">
+            <div class="inner" style="text-align: center">
+                <br />
+                <h5>En Fazla Başlık İçeren Kategori</h5>
+                <h4>@ViewBag.categoryTitles</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="small-box bg-gradient-warning">
+            <div class="inner" style="text-align: center">
+                <br />
+                <h5>Kategori Alanında Statü Farkı(True-False)</h5>
+                <h4>@ViewBag.DifferenceCategories</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
