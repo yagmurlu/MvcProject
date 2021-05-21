@@ -14,7 +14,7 @@ namespace BussinessLayer.Concrete
     {
         ICategoryDal _categoryDal;
 
-        public CategoryManager(ICategoryDal categoryDal)
+        public CategoryManager(ICategoryDal categoryDal)//construcor method
         {
             _categoryDal = categoryDal;
         }
