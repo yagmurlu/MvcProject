@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "AddHeading";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Başlık Ekleme Sayfası</h2>
+<br />
+<style>
+    .ValidationColor {
+        color: red;
+    }
+</style>
+@using (Html.BeginForm("AddHeading", "Heading", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.Label("Başılk Adı:")
+        @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingName, "", new { @class = "ValidationColor " })
+        <br />
+        @Html.Label("Kategori:")
+        @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryID, "", new { @class = "ValidationColor" })
+        <br />
+        @Html.Label("Yazar:")
+        @Html.TextBoxFor(x => x.WriterID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterID, "", new { @class = "ValidationColor" })
+        <br />
+       
+        <button class="btn btn-success">Başlığı Oluştur</button>
+        <br>
+    </div>
+
+}
