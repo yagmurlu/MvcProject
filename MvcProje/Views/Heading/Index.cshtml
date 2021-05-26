@@ -6,6 +6,9 @@
 }
 @{ string color = ""; }
 <!DOCTYPE html>
+<br />
+<a href="/Heading/AddHeading/" class="btn btn-outline-success"style="position:absolute;right:30px;width:210px">Yeni Başlık</a>
+<br />
 <html>
 <body class="hold-transition sidebar-mini">
     <!-- Content Header (Page header) -->
@@ -102,7 +105,7 @@
                                 <span class="@color">@item.Category.CategoryName</span>
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="#">
+                                <a class="btn btn-primary btn-sm" href="/Heading/ContentByHeading/@item.HeadingID">
                                     <i class="fas fa-folder">
                                     </i>
                                     İçerik
