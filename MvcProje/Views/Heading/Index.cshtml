@@ -85,19 +85,19 @@
                                 @item.HeadingID
                             </td>
                             <td>
-                                <a>
+                                <b>
                                     @item.HeadingName
-                                </a>
+                                </b>
                                 <br />
                                 <small>
-                                    @item.HeadingDate.ToShortDateString()
-                                    
+                                    <i>@item.HeadingDate.ToShortDateString()</i>             
                                 </small>
                             </td>
                             <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage">
+                                        <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage"style="float:left">
+                                        <b style="position:absolute;margin:15px 15px">@item.Writer.WriterName @item.Writer.WriterSurName</b>
                                     </li>
                                 </ul>
                             </td>                        
@@ -110,7 +110,7 @@
                                     </i>
                                     İçerik
                                 </a>
-                                <a class="btn btn-info btn-sm" href="#">
+                                <a class="btn btn-info btn-sm" href="/Heading/EditHeading/@item.HeadingID">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Düzenle
