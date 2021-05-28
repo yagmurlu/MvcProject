@@ -35,7 +35,7 @@ namespace BussinessLayer.Concrete
 
         public void HeadingDelete(Heading heading)//veri tabanından silmemek için güncellme yaptık.
         {
-            heading.HeadingStatus = false;
+            
             _headingDal.Update(heading);
         }
 

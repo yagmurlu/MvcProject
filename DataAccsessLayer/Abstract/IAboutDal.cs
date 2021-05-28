@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace DataAccsessLayer.Abstract
 {
     public interface IAboutDal:IRepository<About>
-
     {
     }
 }
