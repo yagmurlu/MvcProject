@@ -6,6 +6,7 @@
 }
 
 @*POP-UP kullanımı*@
+@*Partıal Kullanıldı*@
 <h2>Hakkımızda Veri Listesi</h2>
 <table class="table table-bordered">
     <tr>
@@ -24,33 +25,5 @@
         </tr>
     }
 </table>
-<button class="btn btn-primary" data-toggle="modal"data-target="#Modal1">@*//pop-up*@
-    Yeni Hakkımızda
-</button>
-<div class="modal" id="Modal1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Hakkımızda Metin Girişi</h2>
-            </div>
-            <form method="post"action="/About/AddAbout/">
-                <div class="modal-body">
-                    <label>Hakkımda metin 1</label>
-                    <input type="text" name="AboutDetails1" class="form-control" />
-                    <br />
-                    <label>Hakkımda metin 2</label>
-                    <input type="text" name="AboutDetails2" class="form-control" />
-                    <br />
-                    <label>Hakkımda görsel 1</label>
-                    <input type="text" name="AboutImage1" class="form-control" />
-                    <br />
-                    <label>Hakkımda görsel 2</label>
-                    <input type="text" name="AboutImage2" class="form-control" />
-                    <br />
-                    <button class="btn btn-info">Kaydet</button>
 
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+@Html.Action("AboutPartial", "About")
