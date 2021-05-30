@@ -24,6 +24,9 @@ namespace MvcProje.Controllers
             var contactValues = cm.GetById(id);
             return View(contactValues);
         }
-
+        public PartialViewResult ContactPartial()
+        {
+            return PartialView();
+        }
     }
 }
