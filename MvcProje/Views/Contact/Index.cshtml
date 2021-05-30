@@ -1,11 +1,13 @@
-﻿@{
+﻿@using EntityLayer.Concrete
+@model List<Contact>
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <!DOCTYPE html>
 <html>
-
 <body class="hold-transition sidebar-mini">
 
     <!-- Content Wrapper. Contains page content -->
@@ -15,7 +17,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Mesaj Sayfası</h1>
-                </div>        
+                </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
