@@ -23,14 +23,19 @@ namespace BussinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public List<Message> GetList()
+        public List<Message> GetListInbox()//Alıcı mail
         {
-            return _messageDal.List();
+            return _messageDal.List(x=>x.RecevierMail=="admin@mail.com");
+        }
+
+        public List<Message> GetListSendBox()//Gönderen Mail
+        {
+            return _messageDal.List(x => x.SenderMail == "admin@mail.com");
         }
 
         public void MessageAddBL(Message message)
         {
-            throw new NotImplementedException();
+            _messageDal.Insert(message);
         }
 
         public void MessageDelete(Message message)
