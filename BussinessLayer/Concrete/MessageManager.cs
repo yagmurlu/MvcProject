@@ -47,5 +47,7 @@ namespace BussinessLayer.Concrete
         {
             throw new NotImplementedException();
         }
+
+      
     }
 }
