@@ -138,6 +138,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HeadingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -310,6 +311,16 @@
     <Content Include="AdminLTE-3.0.4\docs\_layouts\home.html" />
     <Content Include="AdminLTE-3.0.4\docs\_layouts\page.html" />
     <Content Include="AdminLTE-3.0.4\docs\_layouts\post.html" />
+    <Content Include="AdminLTE-3.0.4\Images\abracadabra-484969_1280.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\autumn-83761_1280.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\car-5078580_1280.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\crescent-4875339_1920.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\giraffe-1959110_1280.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\london-bridge-2324875_1280.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\moon-31665_1280.png" />
+    <Content Include="AdminLTE-3.0.4\Images\night-3078326_1920.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\ornaments-4927258_1280.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\pexels-aaditya-arora-592753.jpg" />
     <Content Include="AdminLTE-3.0.4\index.html" />
     <Content Include="AdminLTE-3.0.4\index2.html" />
     <Content Include="AdminLTE-3.0.4\index3.html" />
@@ -2303,6 +2314,7 @@
     <Content Include="Views\Message\GetInBoxMessageDetails.cshtml" />
     <Content Include="Views\Message\GetSendBoxMessageDetails.cshtml" />
     <Content Include="Views\ErrorPage\Page404.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
