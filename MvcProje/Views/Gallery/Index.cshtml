@@ -1,4 +1,5 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<ImageFile>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -47,13 +48,17 @@
                                 Ekko Lightbox
                             </div>
                         </div>
+                       
                         <div class="card-body">
                             <div class="row">
+                                @foreach (var item in Model)
+                                {
                                 <div class="col-sm-2">
-                                    <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery">
-                                        <img src="https://via.placeholder.com/300/FFFFFF?text=1" class="img-fluid mb-2" alt="white sample" />
+                                    <a href="@item.ImagePath" data-toggle="lightbox" data-title="@item.ImageName" data-gallery="gallery">
+                                        <img src="@item.ImagePath" class="img-fluid mb-2" alt="white sample" style="height:200px;width:300px" />
                                     </a>
                                 </div>
+                                }
                             </div>
                         </div>
                     </div>
