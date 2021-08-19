@@ -2,8 +2,7 @@
 @{
     Layout = null;
 }
-
-@*<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <title>Admin Login</title>
@@ -28,31 +27,33 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap py-5">
-                        <div class="img d-flex align-items-center justify-content-center" style="        background-image: url(/AdminLTE-3.0.4/login-form-19/images/bg.jpg);"></div>
+                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/AdminLTE-3.0.4/login-form-19/images/bg.jpg);"></div>
                         <h3 class="text-center mb-0">Hoş Geldiniz</h3>
-                        
-                        
-                            <div class="form-group">
-                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                                <input type="text" class="form-control" placeholder="Kullanıcı Adı" required>
+
+                        @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                        {
+                        <div class="form-group">
+                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+                            <input type="text" class="form-control"name="AdminUserName" placeholder="Kullanıcı Adı" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
+                            <input type="password" class="form-control"name="AdminPassword" placeholder="******" required>
+                        </div>
+                        <div class="form-group d-md-flex">
+                            <div class="w-100 text-md-right">
+                                <a href="#">Şifremi Unuttum</a>
                             </div>
-                            <div class="form-group">
-                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
-                                <input type="password" class="form-control" placeholder="******" required>
-                            </div>
-                            <div class="form-group d-md-flex">
-                                <div class="w-100 text-md-right">
-                                    <a href="#">Şifremi Unuttum</a>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Giriş Yap</button>
-                            </div>
-                      
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn form-control btn-primary rounded submit px-3">Giriş Yap</button>
+                        </div>
+
                         <div class="w-100 text-center mt-4 text">
-                           
+
                             <a href="#">Ana Sayfaya Git</a>
                         </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -65,6 +66,7 @@
     <script src="~/AdminLTE-3.0.4/login-form-19/js/main.js"></script>
 
 </body>
-</html>*@
+</html>
+
 
 
