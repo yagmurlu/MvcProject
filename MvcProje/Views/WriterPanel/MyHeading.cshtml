@@ -122,21 +122,11 @@
                                         </i>
                                         Düzenle
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
+                                    <a class="btn btn-danger btn-sm" href="/WriterPanel/DeleteHeading/@item.HeadingID">
                                         <i class="fas fa-trash">
                                         </i>
-
-                                        @switch (item.HeadingStatus)
-                                        {
-                                            case true:
-                                                checkStatus = "Pasif Yap";
-                                                break;
-                                            case false:
-                                                checkStatus = "Aktif Yap";
-                                                break;
-                                        }
-                                        @checkStatus
-
+                                        Sİl
+                                 
                                     </a>
                                 </td>
                             </tr>
