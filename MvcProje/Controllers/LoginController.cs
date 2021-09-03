@@ -39,5 +39,31 @@ namespace MvcProje.Controllers
             }
            
         }
+        [HttpGet]
+        public ActionResult WriterLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult WriterLogin(Writer p)
+        {
+
+            Context c = new Context();
+            var writeruserinfo = c.Writers.FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
+            if (writeruserinfo != null)
+            {
+                //yönlendrime işlemleri
+                FormsAuthentication.SetAuthCookie(writeruserinfo.WriterMail, false);
+                Session["WriterMail"] = writeruserinfo.WriterMail;
+                return RedirectToAction("MyContent", "WriterPanelContent");
+            }
+            else
+            {
+                //Hata Mesajı döndür
+                ViewData["ErrorMessage"] = "Kullanıcı Adı veya Parola Yanlış!";
+                return RedirectToAction("WriterLogin");
+            }
+           
+        }
     }
 }
