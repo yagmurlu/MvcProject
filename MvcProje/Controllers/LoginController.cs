@@ -9,9 +9,11 @@ using System.Web.Security;
 
 namespace MvcProje.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
+        
         [HttpGet]
         public ActionResult Index()
         {
@@ -32,6 +34,7 @@ namespace MvcProje.Controllers
             else
             {
                 //Hata Mesajı döndür
+                ViewData["ErrorMessage"] = "Kullanıcı Adı veya Parola Yanlış!";
                 return RedirectToAction("Index");
             }
            
