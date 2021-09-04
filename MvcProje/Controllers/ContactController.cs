@@ -16,6 +16,7 @@ namespace MvcProje.Controllers
         MessageManager messageManager = new MessageManager(new EfMessageDal());
         ContactManager cm = new ContactManager(new EfContactDal());
         ContactValidator cv = new ContactValidator();
+        
         public ActionResult Index()
         {
             var contactValues = cm.GetList();
