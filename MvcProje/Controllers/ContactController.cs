@@ -27,15 +27,15 @@ namespace MvcProje.Controllers
             var contactValues = cm.GetById(id);
             return View(contactValues);
         }
-        public PartialViewResult ContactPartial()
+        public PartialViewResult ContactPartial(string p)
         {
             var contact = cm.GetList().Count();
             ViewBag.contact = contact;
 
-            var sendMail = messageManager.GetListSendBox().Count();
+            var sendMail = messageManager.GetListSendBox(p).Count();
             ViewBag.sendMail = sendMail;
 
-            var receiverMail = messageManager.GetListInbox().Count();
+            var receiverMail = messageManager.GetListInbox(p).Count();
             ViewBag.receiverMail = receiverMail;
 
             //var draftMail = messageManager.GetListSendBox().Where(m => m.IsDraft == true).Count();
