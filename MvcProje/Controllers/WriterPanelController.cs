@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcProje.Controllers
 {
@@ -82,9 +84,10 @@ namespace MvcProje.Controllers
             hm.HeadingDelete(headingValue);
             return RedirectToAction("MyHeading");
         }
-        public ActionResult AllHeading()
+        //p parametresi sayfalama işleminin kaçtan başlayacağını belirler.
+        public ActionResult AllHeading(int p=1)
         {
-            var headingList = hm.GetList();
+            var headingList = hm.GetList().ToPagedList(p,4);
             return View(headingList);
         }
     }
