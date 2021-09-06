@@ -1,4 +1,6 @@
-﻿using DataAccsessLayer.Concrete;
+﻿using BussinessLayer.Concrete;
+using DataAccsessLayer.Concrete;
+using DataAccsessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,7 @@ namespace MvcProje.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        
+        WriterLoginManager wlm = new WriterLoginManager(new EfWriterDal());
         [HttpGet]
         public ActionResult Index()
         {
@@ -48,8 +50,9 @@ namespace MvcProje.Controllers
         public ActionResult WriterLogin(Writer p)
         {
 
-            Context c = new Context();
-            var writeruserinfo = c.Writers.FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
+            //Context c = new Context();
+            //var writeruserinfo = c.Writers.FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
+            var writeruserinfo = wlm.GetWriter(p.WriterMail,p.WriterPassword);
             if (writeruserinfo != null)
             {
                 //yönlendrime işlemleri
