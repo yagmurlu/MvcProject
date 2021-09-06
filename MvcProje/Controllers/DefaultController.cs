@@ -8,18 +8,21 @@ using System.Web.Mvc;
 
 namespace MvcProje.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         // GET: Default
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
+        ContentManager cm = new ContentManager(new EfContentDal());
         public ActionResult Headings()
         {
             var headingList = hm.GetList();
             return View(headingList);
         }
-        public ActionResult Index()
+        public PartialViewResult Index(int id=0)
         {
-            return View();
+            var contentList = cm.GetListByHeadingId(id);
+            return PartialView(contentList);
         }
     }
 }

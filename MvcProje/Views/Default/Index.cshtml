@@ -1,18 +1,12 @@
 ﻿@using EntityLayer.Concrete
 @model List<Content>
-@{
-    ViewBag.Title = "MyContent";
-    Layout = "~/Views/Shared/_WriterLayout.cshtml";
-}
 
 <!DOCTYPE html>
 <html>
 
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
-
     <div class="wrapper">
-
         <section class="content">
             <div class="container-fluid">
 
@@ -22,8 +16,6 @@
                         <!-- The time line -->
                         <div class="timeline">
                             <!-- timeline time label -->
-
-
                             @foreach (var item in Model)
                             {
                                 <div class="time-label">
@@ -38,6 +30,9 @@
                                         <div class="timeline-body">
                                             @item.ContentValue
                                         </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header" style="position:absolute;right:0px"><a href="~/Heading/Index/@item.WriterID">@item.Writer.WriterName</a> </h3>
                                     </div>
                                 </div>
                             }
@@ -54,4 +49,5 @@
     <!-- ./wrapper -->
 </body>
 </html>
+
 

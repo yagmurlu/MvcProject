@@ -1,16 +1,13 @@
 ﻿@using EntityLayer.Concrete
 @model List<Heading>
 @{
-    ViewBag.Title = "MyHeading";
+    ViewBag.Title = "AllHeading";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
+
 @{ string color = "";
-    string checkStatus = "";
-    string statusColor = "";
 }
 <!DOCTYPE html>
-<br />
-<a href="/WriterPanel/NewHeading/" class="btn btn-outline-success" style="position:absolute;right:30px;width:210px">Yeni Başlık</a>
 <br />
 <html>
 <body class="hold-transition sidebar-mini">
@@ -117,17 +114,12 @@
                                         </i>
                                         İçerik
                                     </a>
-                                    <a class="btn btn-warning btn-sm" href="/WriterPanel/EditHeading/@item.HeadingID">
+                                    <a class="btn btn-warning btn-sm" href="/WriterPanelContent/AddContent/@item.HeadingID">
                                         <i class="fas fa-pencil-alt">
                                         </i>
-                                        Düzenle
+                                       Başlığa Yaz
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="/WriterPanel/DeleteHeading/@item.HeadingID">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Sİl
-                                 
-                                    </a>
+                                    
                                 </td>
                             </tr>
                         }

@@ -15,6 +15,7 @@ namespace MvcProje.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
         // GET: Heading
+
         public ActionResult Index()
         {
             var HeadingValues = hm.GetList();
