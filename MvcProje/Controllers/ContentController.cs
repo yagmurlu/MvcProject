@@ -1,4 +1,5 @@
 ﻿using BussinessLayer.Concrete;
+using DataAccsessLayer.Concrete;
 using DataAccsessLayer.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,17 @@ namespace MvcProje.Controllers
     {
         ContentManager cm = new ContentManager(new EfContentDal());
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
-        WriterManager wm = new WriterManager(new EfWriterDal());
+        WriterManager wm = new WriterManager(new EfWriterDal());   
         // GET: Content
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult GettAllContent(string p)
+        {
+
+            var values = cm.GetList(p);
+            return View(values.ToList());
         }
         public ActionResult ContentByHeading(int id)
         {

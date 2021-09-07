@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccsessLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,9 +28,19 @@ namespace MvcProje.Controllers
             return View();
         }
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult HomePage()
         {
-           
+            Context c = new Context();
+            var headerCount = c.Headings.Count().ToString();
+            ViewBag.headerCount = headerCount;
+
+            var writerCount = c.Writers.Count().ToString();
+            ViewBag.writerCount = writerCount;
+            var contentCount = c.Contents.Count().ToString();
+            ViewBag.contentCount = contentCount;
+            var messageCount = c.Messages.Count().ToString();
+            ViewBag.messageCount = messageCount;
             return View();
         }
     }
