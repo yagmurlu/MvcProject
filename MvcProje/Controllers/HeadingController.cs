@@ -21,6 +21,11 @@ namespace MvcProje.Controllers
             var HeadingValues = hm.GetList();
             return View(HeadingValues);
         }
+        public ActionResult HeadingReport()
+        {
+            var headingValues = hm.GetList();
+            return View(headingValues);
+        }
         [HttpGet]
         public ActionResult AddHeading()
         {
@@ -65,7 +70,7 @@ namespace MvcProje.Controllers
             return View(headingValue);
         }
         [HttpPost]
-        public ActionResult EditHeading(Heading p)
+        public ActionResult EditHeading(Heading p) 
         {
             hm.HeadingUpdate(p);
             return RedirectToAction("Index");

@@ -3,6 +3,8 @@
     ViewBag.Title = "EditCategory";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
 <br />
 <h2>Kategori Güncelleme Sayfası</h2>
 <br />
@@ -18,6 +20,11 @@
     @Html.Label("Açıklama Yazınız")
     @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
     <br /><br />
-    <button class="btn btn-success">Güncelle</button>
+    <button class="btn btn-success" id="btnEdit">Güncelle</button>
+    <script>
+        $('#btnEdit').click(function () {
+            swal("Güncellendi!", "Kategori Başarılı Bir Şekilde Güncellendi!", "success");
+        });
+    </script>
 </div>
 }

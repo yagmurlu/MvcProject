@@ -32,5 +32,5 @@ namespace MvcProje.Controllers
             });
             return ct;
         }
-    }
+    } 
 }
