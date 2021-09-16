@@ -1,12 +1,13 @@
 ﻿@using EntityLayer.Concrete
 @model List<Heading>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ActiveHeadingList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+
 @{ string color = "";
     string checkStatus = "";
-    string statusColor = "";
 }
 <!DOCTYPE html>
 <br />
@@ -91,73 +92,62 @@
                                     color = "badge badge-secondary";
                                     break;
                             }
-                        <tr>
-                            <td>
-                                @item.HeadingID
-                            </td>
-                            <td>
-                                <b>
-                                    @item.HeadingName
-                                </b>
-                                <br />
-                                <small>
-                                    <i>@item.HeadingDate.ToShortDateString()</i>
-                                </small>
-                            </td>
-                            <td>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage" style="float:left">
-                                        <b style="position:absolute;margin:15px 15px">@item.Writer.WriterName @item.Writer.WriterSurName</b>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td>
-                                @switch (item.HeadingStatus)
-                                {
-                                    case true:
-                                        statusColor = "badge badge-success";
-                                        break;
-                                    case false:
-                                        statusColor = "badge badge-danger";
-                                        break;
-                                }
-                                <span class="@statusColor">@item.HeadingStatus</span>
-                            </td>
+                            <tr>
+                                <td>
+                                    @item.HeadingID
+                                </td>
+                                <td>
+                                    <b>
+                                        @item.HeadingName
+                                    </b>
+                                    <br />
+                                    <small>
+                                        <i>@item.HeadingDate.ToShortDateString()</i>
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage" style="float:left">
+                                            <b style="position:absolute;margin:15px 15px">@item.Writer.WriterName @item.Writer.WriterSurName</b>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <span style="background-color:lawngreen">@item.HeadingStatus</span>
+                                </td>
 
-                            <td class="project-state">
-                                <span class="@color">@item.Category.CategoryName</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.HeadingID">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    İçerik
-                                </a>
-                                <a class="btn btn-warning btn-sm" href="/Heading/EditHeading/@item.HeadingID">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Düzenle
-                                </a>
-                                <a id="btn" class="btn btn-danger btn-sm" href="/Heading/StatusHeading/@item.HeadingID">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    @if (item.HeadingStatus==true)
-                                    {
-                                        checkStatus = "Pasif Yap";
-                                        
-                                    }
-                                    else
-                                    {
+                                <td class="project-state">
+                                    <span class="@color">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.HeadingID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        İçerik
+                                    </a>
+                                    <a class="btn btn-warning btn-sm" href="/Heading/EditHeading/@item.HeadingID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a id="btn" class="btn btn-danger btn-sm" href="/Heading/StatusHeading/@item.HeadingID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        @if (item.HeadingStatus == true)
+                                        {
+                                            checkStatus = "Pasif Yap";
+                                        }
+                                        else
+                                        {
+                                            checkStatus = "Aktif Yap";
+                                        }
 
-                                        checkStatus = "Aktif Yap";
-                                    }
-                                 
-                                    @checkStatus
+                                        @checkStatus
 
-                                </a>
-                            </td>
-                        </tr>
+                                    </a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>

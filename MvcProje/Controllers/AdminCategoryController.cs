@@ -13,13 +13,21 @@ namespace MvcProje.Controllers
 {
     public class AdminCategoryController : Controller
     {
-        CategoryManager cm =new  CategoryManager(new EfCategoryDal());
-        [Authorize(Roles="A")]
+        CategoryManager cm = new CategoryManager(new EfCategoryDal());
+        HeadingManager hm = new HeadingManager(new EfHeadingDal());
+        [Authorize(Roles = "A")]
         public ActionResult Index()
         {
             var categoryValues = cm.GetList();
             return View(categoryValues);
         }
+        //public ActionResult CategoryHeading(int id)
+        //{
+        //    //p = (string)Session["WriterMail"];
+        //    //var writeridinfo = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
+        //    //var values = hm.GetListByWriter(writeridinfo);
+        //    //return View(values);
+        //}
         [HttpGet]
         public ActionResult AddCategory()
         {
@@ -63,5 +71,5 @@ namespace MvcProje.Controllers
             return RedirectToAction("Index");
         }
     }
-    
+
 }

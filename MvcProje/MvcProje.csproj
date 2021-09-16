@@ -2636,6 +2636,8 @@
     <Content Include="Views\Content\GettAllContent.cshtml" />
     <Content Include="Views\Chart\Index.cshtml" />
     <Content Include="Views\Heading\HeadingReport.cshtml" />
+    <Content Include="Views\AdminCategory\CategoryHeading.cshtml" />
+    <Content Include="Views\Heading\ActiveHeadingList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

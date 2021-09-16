@@ -1,4 +1,5 @@
 ﻿using BussinessLayer.Concrete;
+using DataAccsessLayer.Concrete;
 using DataAccsessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -35,14 +36,14 @@ namespace MvcProje.Controllers
                                                       Text = x.CategoryName,
                                                       Value = x.CategoryID.ToString()
                                                   }).ToList();
-            
+
 
             List<SelectListItem> valueWriter = (from x in wm.GetList()
-                                                  select new SelectListItem
-                                                  {
-                                                      Text = x.WriterName+" "+x.WriterSurName,
-                                                      Value = x.WriterID.ToString()
-                                                  }).ToList();
+                                                select new SelectListItem
+                                                {
+                                                    Text = x.WriterName + " " + x.WriterSurName,
+                                                    Value = x.WriterID.ToString()
+                                                }).ToList();
             ViewBag.vlc = valueCategory;
             ViewBag.vlw = valueWriter;
             return View();
@@ -70,7 +71,7 @@ namespace MvcProje.Controllers
             return View(headingValue);
         }
         [HttpPost]
-        public ActionResult EditHeading(Heading p) 
+        public ActionResult EditHeading(Heading p)
         {
             hm.HeadingUpdate(p);
             return RedirectToAction("Index");
@@ -81,6 +82,28 @@ namespace MvcProje.Controllers
             headingValue.HeadingStatus = false;
             hm.HeadingDelete(headingValue);
             return RedirectToAction("Index");
+        }
+        public ActionResult StatusHeading(int id)
+        {
+            var headingValue = hm.GetById(id);
+            if (headingValue.HeadingStatus == false)
+            {
+
+                headingValue.HeadingStatus = true;
+                hm.HeadingDelete(headingValue);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                headingValue.HeadingStatus = false;
+                hm.HeadingDelete(headingValue);
+                return RedirectToAction("Index");
+            }
+        }
+        public ActionResult ActiveHeadingList()
+        {
+            var heading = hm.GetListHeadingTrue();
+            return View(heading);
         }
     }
 }

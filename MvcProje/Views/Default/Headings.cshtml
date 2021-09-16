@@ -86,23 +86,13 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         @foreach (var item in Model)
                         {
-                        <li class="nav-item">
-                            <a href="/Default/Headings/@item.HeadingID" class="nav-link">
-
-                                <p>
-                                    @if (item.HeadingName.Length < 20)
-                                    {
-                                        <b class="nav-icon fas fa-bookmark">&nbsp;@item.HeadingName</b>
-                                    }
-                                    else if (item.HeadingName.Length >= 20)
-                                    {
-
-                                        <b class="nav-icon fas fa-bookmark">&nbsp;@item.HeadingName.Substring(0, item.HeadingName.Substring(0, 20).LastIndexOf(""))...</b>
-                                    }
-                                    @*@item.HeadingName (@item.HeadingID)*@
-                                </p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="/Default/Headings/@item.HeadingID" class="nav-link">
+                                    <p>
+                                        @item.HeadingName
+                                    </p>
+                                </a>
+                            </li>
                         }
                     </ul>
                 </nav>
@@ -114,9 +104,9 @@ to get the desired effect
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->
-            @Html.Action("Index","Default")
+            @Html.Action("Index", "Default")
             <div class="content">
-               
+
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content -->

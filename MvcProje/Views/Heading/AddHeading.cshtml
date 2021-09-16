@@ -3,6 +3,8 @@
     ViewBag.Title = "AddHeading";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
 <br />
 <h2>Başlık Ekleme Sayfası</h2>
 <br />
@@ -14,24 +16,29 @@
 @using (Html.BeginForm("AddHeading", "Heading", FormMethod.Post))
 {
 
-    <div class="form-group">
-        @Html.Label("Başılk Adı:")
-        @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.HeadingName, "", new { @class = "ValidationColor " })
-        <br />
-        @Html.Label("Kategori:")
-        @Html.DropDownListFor(x =>x.CategoryID,(List<SelectListItem>)ViewBag.vlc,
-       new { @class = "form-control" })          
-        @Html.ValidationMessageFor(x => x.CategoryID, "", new { @class = "ValidationColor" })
-        <br />
-        @Html.Label("Yazar:")
-        @Html.DropDownListFor(x=>x.WriterID,(List<SelectListItem>)ViewBag.vlw,
-       new {@class="form-control"})
-        @Html.ValidationMessageFor(x => x.WriterID, "", new { @class = "ValidationColor" })
-        <br />
-       
-        <button class="btn btn-success">Başlığı Oluştur</button>
-        <br>
-    </div>
+<div class="form-group">
+    @Html.Label("Başılk Adı:")
+    @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.HeadingName, "", new { @class = "ValidationColor " })
+    <br />
+    @Html.Label("Kategori:")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc,
+   new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryID, "", new { @class = "ValidationColor" })
+    <br />
+    @Html.Label("Yazar:")
+    @Html.DropDownListFor(x => x.WriterID, (List<SelectListItem>)ViewBag.vlw,
+   new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.WriterID, "", new { @class = "ValidationColor" })
+    <br />
+
+    <button class="btn btn-success" id="btnKaydet">Başlığı Oluştur</button>
+    <script>
+        $('#btnKaydet').click(function () {
+            swal("Kaydedildi!", "Yeni Başlık Başarılı Bir Şekilde Oluşturldu!", "success");
+        });
+    </script>
+    <br>
+</div>
 
 }

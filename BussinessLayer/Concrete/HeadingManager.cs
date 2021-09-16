@@ -27,7 +27,10 @@ namespace BussinessLayer.Concrete
         {
             return _headingDal.List();
         }
-
+        public List<Heading> GetListHeadingTrue()
+        {
+            return _headingDal.List(x=>x.HeadingStatus==true);
+        }
         public List<Heading> GetListByWriter(int id)
         {
             return _headingDal.List(x => x.WriterID == id);

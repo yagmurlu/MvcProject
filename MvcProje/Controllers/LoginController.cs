@@ -37,7 +37,7 @@ namespace MvcProje.Controllers
             {
                 //Hata Mesajı döndür
                 ViewData["ErrorMessage"] = "Kullanıcı Adı veya Parola Yanlış!";
-                return RedirectToAction("Index");
+                return View();
             }
            
         }
