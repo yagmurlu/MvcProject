@@ -60,6 +60,7 @@
     <Compile Include="Abstract\IImageDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\ISkillDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
     <Compile Include="EntityFramework\EfImageFileDal.cs" />
     <Compile Include="EntityFramework\EfMessageDal.cs" />
+    <Compile Include="EntityFramework\EfSkillDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202105211836593_mig_writer_edit.cs" />
     <Compile Include="Migrations\202105211836593_mig_writer_edit.designer.cs">
@@ -112,6 +114,10 @@
     <Compile Include="Migrations\202107191633539_add_admin_table.cs" />
     <Compile Include="Migrations\202107191633539_add_admin_table.designer.cs">
       <DependentUpon>202107191633539_add_admin_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109181406008_SkillTable.cs" />
+    <Compile Include="Migrations\202109181406008_SkillTable.designer.cs">
+      <DependentUpon>202109181406008_SkillTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107191633539_add_admin_table.resx">
       <DependentUpon>202107191633539_add_admin_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109181406008_SkillTable.resx">
+      <DependentUpon>202109181406008_SkillTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

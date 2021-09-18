@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.Skill
+@{
+    ViewBag.Title = "AddSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<h1 style="color:purple;margin-left:450px;">Yetenek Ekleme Sayfası</h1>
+@using (Html.BeginForm("AddSkill", "Skill", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Yetenek Adı:")
+        @Html.TextBoxFor(x => x.SkillName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SkillName, "", new { @class = "text-primary" })
+        <br /><br />
+        @Html.Label("Yetenek Seviyesi:")
+        @Html.TextBoxFor(x => x.SkillLevel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SkillLevel, "", new { @class = "text-primary" })
+        <br /><br />
+
+        <button class="btn btn-success" id="btnKaydet">Kaydet</button>
+        <script>
+            $('#btnKaydet').click(function () {
+                swal("Kaydedildi!", "Yetenek Başarılı Bir Şekilde Oluşturldu!", "success");
+            });
+        </script>
+    </div>
+}
+
+

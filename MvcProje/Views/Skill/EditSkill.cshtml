@@ -1,0 +1,29 @@
+﻿@model EntityLayer.Concrete.Skill
+@{
+    ViewBag.Title = "EditSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<h1 style="color:purple;margin-left:450px;">Yetenek Güncelleme Sayfası</h1>
+<br />
+@using (Html.BeginForm("EditSkill", "Skill", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Yetenek ID")
+        @Html.TextBoxFor(x => x.SkillID, new { @class = "form-control" })
+        <br /><br />
+        @Html.Label("Yetenke Adı")
+        @Html.TextBoxFor(x => x.SkillName, new { @class = "form-control" })
+        <br /><br />
+        @Html.Label("Seviye")
+        @Html.TextAreaFor(x => x.SkillLevel, new { @class = "form-control" })
+        <br /><br />
+        <button class="btn btn-success" id="btnEdit">Güncelle</button>
+        <script>
+            $('#btnEdit').click(function () {
+                swal("Güncellendi!", "Yetenek Başarılı Bir Şekilde Güncellendi!", "success");
+            });
+        </script>
+    </div>
+}

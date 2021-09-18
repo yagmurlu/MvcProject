@@ -152,6 +152,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\SkillController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\WriterController.cs" />
     <Compile Include="Controllers\WriterPanelContentController.cs" />
@@ -2042,6 +2043,17 @@
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.css" />
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.min.css" />
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.min.js" />
+    <Content Include="AdminLTE-3.0.4\skill\css\style.css" />
+    <Content Include="AdminLTE-3.0.4\skill\images\5.jpg" />
+    <Content Include="AdminLTE-3.0.4\skill\images\AdminProfile.png" />
+    <Content Include="AdminLTE-3.0.4\skill\images\img1.jpg" />
+    <Content Include="AdminLTE-3.0.4\skill\images\sprite.png" />
+    <Content Include="AdminLTE-3.0.4\skill\index.html" />
+    <Content Include="AdminLTE-3.0.4\skill\js\bars.js" />
+    <Content Include="AdminLTE-3.0.4\skill\js\easyResponsiveTabs.js" />
+    <Content Include="AdminLTE-3.0.4\skill\js\jquery-1.11.1.min.js" />
+    <Content Include="AdminLTE-3.0.4\skill\js\jquery.circlechart.js" />
+    <Content Include="AdminLTE-3.0.4\skill\w3layouts-License.txt" />
     <Content Include="AdminLTE-3.0.4\starter.html" />
     <Content Include="AdminLTE-3.0.4\web\css\aos-animation.css" />
     <Content Include="AdminLTE-3.0.4\web\css\aos.css" />
@@ -2638,6 +2650,10 @@
     <Content Include="Views\Heading\HeadingReport.cshtml" />
     <Content Include="Views\AdminCategory\CategoryHeading.cshtml" />
     <Content Include="Views\Heading\ActiveHeadingList.cshtml" />
+    <Content Include="Views\Skill\Index.cshtml" />
+    <Content Include="Views\Skill\AddSkill.cshtml" />
+    <Content Include="Views\Skill\EditSkill.cshtml" />
+    <Content Include="Views\Skill\GetAllSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
