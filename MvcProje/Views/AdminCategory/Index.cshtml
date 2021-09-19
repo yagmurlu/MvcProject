@@ -1,11 +1,22 @@
 ﻿@using EntityLayer.Concrete
-@model List<Category>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Category>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 style="color:purple;margin-left:450px;">KATEGORİLER</h1>
+            </div>
+
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 <br />
 <a href="/AdminCategory/AddCategory" class="btn btn-info">Yeni Kategori</a>
 <br />
@@ -34,3 +45,10 @@
         </tr>
     }
 </table>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    {
+        {"page-link"}
+    }
+})

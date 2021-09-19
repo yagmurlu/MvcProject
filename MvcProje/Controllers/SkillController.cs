@@ -38,7 +38,7 @@ namespace MvcProje.Controllers
             if (result.IsValid)
             {
                 sm.SkillAdd(p);
-                return RedirectToAction("Index");//GetAllSkill e döndür.
+                return RedirectToAction("GetAllSkill");//GetAllSkill e döndür.
 
             }
             else
@@ -60,13 +60,13 @@ namespace MvcProje.Controllers
         public ActionResult EditSkill(Skill p)
         {
             sm.SkillUpdate(p);
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllSkill");
         }
         public ActionResult DeleteSkill(int id)
         {
             var skillValue = sm.GetById(id);
             sm.SkillDelete(skillValue);
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllSkill");
         }
     }
 }

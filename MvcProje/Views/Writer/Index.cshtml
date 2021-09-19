@@ -1,10 +1,13 @@
 ﻿@using EntityLayer.Concrete
-@model List<Writer>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Writer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <br />
+
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini">
@@ -17,10 +20,18 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Yazarlar</h1>
+                    <h1 style="color:purple;margin-left:450px;">YAZARLAR</h1>
                 </div>
+
             </div>
         </div><!-- /.container-fluid -->
+        @Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+   LiElementClasses = new List<string>
+   {
+       {"page-link"}
+   }
+})
     </section>
     <!-- Main content -->
     <section class="content">
@@ -68,3 +79,10 @@
     </section>
 </body>
 </html>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    {
+        {"page-link"}
+    }
+})

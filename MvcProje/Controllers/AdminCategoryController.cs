@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace MvcProje.Controllers
 {
@@ -16,9 +17,9 @@ namespace MvcProje.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         [Authorize(Roles = "A")]
-        public ActionResult Index()
+        public ActionResult Index(int P = 1)
         {
-            var categoryValues = cm.GetList();
+            var categoryValues = cm.GetList().ToPagedList(P,10);
             return View(categoryValues);
         }
         //public ActionResult CategoryHeading(int id)

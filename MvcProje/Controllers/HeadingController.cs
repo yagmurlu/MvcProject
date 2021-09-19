@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcProje.Controllers
 {
@@ -17,9 +19,9 @@ namespace MvcProje.Controllers
         WriterManager wm = new WriterManager(new EfWriterDal());
         // GET: Heading
 
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
-            var HeadingValues = hm.GetList();
+            var HeadingValues = hm.GetList().ToPagedList(p,10);
             return View(HeadingValues);
         }
         public ActionResult HeadingReport()
@@ -100,9 +102,9 @@ namespace MvcProje.Controllers
                 return RedirectToAction("Index");
             }
         }
-        public ActionResult ActiveHeadingList()
+        public ActionResult ActiveHeadingList(int p=1)
         {
-            var heading = hm.GetListHeadingTrue();
+            var heading = hm.GetListHeadingTrue().ToPagedList(p,10);
             return View(heading);
         }
     }

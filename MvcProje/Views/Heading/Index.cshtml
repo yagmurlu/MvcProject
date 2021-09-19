@@ -1,5 +1,7 @@
 ﻿@using EntityLayer.Concrete
-@model List<Heading>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Heading>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -32,7 +34,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Başlık İşlemleri</h3>
+                <h3 class="card-title"style="color:blue;margin-left:450px;">BAŞLIK İŞLEMLERİ</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -91,73 +93,73 @@
                                     color = "badge badge-secondary";
                                     break;
                             }
-                        <tr>
-                            <td>
-                                @item.HeadingID
-                            </td>
-                            <td>
-                                <b>
-                                    @item.HeadingName
-                                </b>
-                                <br />
-                                <small>
-                                    <i>@item.HeadingDate.ToShortDateString()</i>
-                                </small>
-                            </td>
-                            <td>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage" style="float:left">
-                                        <b style="position:absolute;margin:15px 15px">@item.Writer.WriterName @item.Writer.WriterSurName</b>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td>
-                                @switch (item.HeadingStatus)
-                                {
-                                    case true:
-                                        statusColor = "badge badge-success";
-                                        break;
-                                    case false:
-                                        statusColor = "badge badge-danger";
-                                        break;
-                                }
-                                <span class="@statusColor">@item.HeadingStatus</span>
-                            </td>
-
-                            <td class="project-state">
-                                <span class="@color">@item.Category.CategoryName</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.HeadingID">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    İçerik
-                                </a>
-                                <a class="btn btn-warning btn-sm" href="/Heading/EditHeading/@item.HeadingID">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Düzenle
-                                </a>
-                                <a id="btn" class="btn btn-danger btn-sm" href="/Heading/StatusHeading/@item.HeadingID">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    @if (item.HeadingStatus==true)
+                            <tr>
+                                <td>
+                                    @item.HeadingID
+                                </td>
+                                <td>
+                                    <b>
+                                        @item.HeadingName
+                                    </b>
+                                    <br />
+                                    <small>
+                                        <i>@item.HeadingDate.ToShortDateString()</i>
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage" style="float:left">
+                                            <b style="position:absolute;margin:15px 15px">@item.Writer.WriterName @item.Writer.WriterSurName</b>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    @switch (item.HeadingStatus)
                                     {
-                                        checkStatus = "Pasif Yap";
-                                        
+                                        case true:
+                                            statusColor = "badge badge-success";
+                                            break;
+                                        case false:
+                                            statusColor = "badge badge-danger";
+                                            break;
                                     }
-                                    else
-                                    {
+                                    <span class="@statusColor">@item.HeadingStatus</span>
+                                </td>
 
-                                        checkStatus = "Aktif Yap";
-                                    }
-                                 
-                                    @checkStatus
+                                <td class="project-state">
+                                    <span class="@color">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.HeadingID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        İçerik
+                                    </a>
+                                    <a class="btn btn-warning btn-sm" href="/Heading/EditHeading/@item.HeadingID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a id="btn" class="btn btn-danger btn-sm" href="/Heading/StatusHeading/@item.HeadingID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        @if (item.HeadingStatus == true)
+                                        {
+                                            checkStatus = "Pasif Yap";
 
-                                </a>
-                            </td>
-                        </tr>
+                                        }
+                                        else
+                                        {
+
+                                            checkStatus = "Aktif Yap";
+                                        }
+
+                                        @checkStatus
+
+                                    </a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -168,3 +170,10 @@
     </section>
 </body>
 </html>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    {
+        {"page-link"}
+    }
+})
