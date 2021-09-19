@@ -1,0 +1,85 @@
+﻿@using EntityLayer.Concrete
+@model List<Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{ 
+    string checkStatus = "";
+    string statusColor = "";
+    string roleColor = "";
+
+}
+<br />
+<h1 style="color:purple;margin-left:450px;">ADMİNLER</h1>
+<br />
+<a href="/Authorization/AddAdmin" class="btn btn-info">Yeni Admin</a>
+<br />
+<br />
+<table class="table table-dark">
+
+    <tr>
+        <th>#</th>
+        <th>Kullanıcı Adı</th>
+        <th>Yetki</th>
+        <th>Durum</th>
+        <th>Pasif Yap</th>
+        <th>Yetkisini Değiştir</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.AdminId</td>
+    <td>@item.AdminUserName</td>
+    <td>@item.Role.RoleName</td>
+    @*<td>
+        @switch (item.Role.RoleName)
+        {
+            case "A":
+                roleColor = "badge badge-pill badge-primary";
+                break;
+            case "B":
+                roleColor = "badge badge-pill badge-warning";
+                break;
+        }
+        <span class="@roleColor">@item.AdminRole</span>
+    </td>*@
+
+    <td>
+        @switch (item.AdminStatus)
+        {
+            case true:
+                statusColor = "badge badge-success";
+                break;
+            case false:
+                statusColor = "badge badge-danger";
+                break;
+        }
+        <span class="@statusColor">@item.AdminStatus</span>
+    </td>
+    <td><a href="/Authorization/EditAdmin/@item.AdminId" class="btn btn-warning"> Değiştir</a></td>
+    <td>
+        <a href="/Authorization/AdminStatus/@item.AdminId" class="btn btn-danger">
+
+            <i class="fas fa-trash">
+            </i>
+            @if (item.AdminStatus == true)
+            {
+                checkStatus = "Pasif Yap";
+
+            }
+            else
+            {
+
+                checkStatus = "Aktif Yap";
+            }
+
+            @checkStatus
+
+        </a>
+    </td>
+
+</tr>
+    }
+</table>
+

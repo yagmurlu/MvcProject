@@ -25,7 +25,7 @@ namespace MvcProje.Controllers
         public ActionResult Index(Admin p)
         {
             Context c = new Context();
-            var adminuserinfo = c.Admins.FirstOrDefault(x=>x.AdminUserName==p.AdminUserName && x.AdminPassword==p.AdminPassword);
+            var adminuserinfo = c.Admins.FirstOrDefault(x=>x.AdminUserName==p.AdminUserName && x.AdminPassword==p.AdminPassword && x.AdminStatus==true);
             if (adminuserinfo!=null)
             {
                 //yönlendrime işlemleri

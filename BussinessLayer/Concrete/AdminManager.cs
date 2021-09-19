@@ -25,7 +25,7 @@ namespace BussinessLayer.Concrete
 
         public void AdminDelete(Admin admin)
         {
-            _adminDal.Delete(admin);
+            _adminDal.Update(admin);
         }
 
         public void AdminUpdate(Admin admin)
