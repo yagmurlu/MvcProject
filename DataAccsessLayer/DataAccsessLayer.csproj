@@ -129,6 +129,14 @@
     <Compile Include="Migrations\202109191930425_addTableRoles.designer.cs">
       <DependentUpon>202109191930425_addTableRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109201436094_Dto.cs" />
+    <Compile Include="Migrations\202109201436094_Dto.designer.cs">
+      <DependentUpon>202109201436094_Dto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109212203397__hash_Admin_Writer.cs" />
+    <Compile Include="Migrations\202109212203397__hash_Admin_Writer.designer.cs">
+      <DependentUpon>202109212203397__hash_Admin_Writer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,6 +189,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109191930425_addTableRoles.resx">
       <DependentUpon>202109191930425_addTableRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109201436094_Dto.resx">
+      <DependentUpon>202109201436094_Dto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109212203397__hash_Admin_Writer.resx">
+      <DependentUpon>202109212203397__hash_Admin_Writer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

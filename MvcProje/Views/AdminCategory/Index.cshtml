@@ -15,7 +15,7 @@
             </div>
 
         </div>
-    </div><!-- /.container-fluid -->
+    </div>
 </section>
 <br />
 <a href="/AdminCategory/AddCategory" class="btn btn-info">Yeni Kategori</a>
@@ -26,8 +26,6 @@
     <tr>
         <th>#</th>
         <th>Kategori Adı</th>
-        @*<th>Açıklama</th>*@
-        @*<th>Durum</th>*@
         <th>Sil</th>
         <th>Güncelle</th>
         <th>Başlıklar</th>
@@ -37,8 +35,6 @@
         <tr>
             <td>@item.CategoryID</td>
             <td>@item.CategoryName</td>
-            @*<td>@item.CategoryDescription</td>*@
-            @*<td>@item.CategoryStatus</td>*@
             <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
             <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-warning">Güncelle</a></td>
             <td><a href="/AdminCategory/CategoryHeading/@item.CategoryID" class="btn btn-primary">Başlıklar</a></td>

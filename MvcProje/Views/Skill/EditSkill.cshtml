@@ -10,8 +10,7 @@
 @using (Html.BeginForm("EditSkill", "Skill", FormMethod.Post))
 {
     <div class="form-group">
-        @Html.Label("Yetenek ID")
-        @Html.TextBoxFor(x => x.SkillID, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.SkillID, new { @class = "form-control" })
         <br /><br />
         @Html.Label("Yetenke Adı")
         @Html.TextBoxFor(x => x.SkillName, new { @class = "form-control" })

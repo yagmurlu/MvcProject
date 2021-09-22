@@ -14,9 +14,9 @@ namespace EntityLayer.Concrete
         [StringLength(50)]
         public string CategoryName { get; set; }
         [StringLength(200)]
-        public string CategoryDescription{ get; set; }//Açıklama
-        public bool CategoryStatus { get; set; }// veri tabanından silmek yerine aktif/ pasif durumları yapılır.
-        public ICollection<Heading> Headings { get; set; } //heading-kategori ilişkilendirmesi
+        public string CategoryDescription { get; set; }
+        public bool CategoryStatus { get; set; }
+        public ICollection<Heading> Headings { get; set; }
 
-        }
+    }
 }

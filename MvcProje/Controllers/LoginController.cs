@@ -1,10 +1,15 @@
-﻿using BussinessLayer.Concrete;
+﻿using BussinessLayer.Abstract;
+using BussinessLayer.Concrete;
 using DataAccsessLayer.Concrete;
 using DataAccsessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using EntityLayer.Dto;
+using MvcProje.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -15,22 +20,23 @@ namespace MvcProje.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        WriterLoginManager wlm = new WriterLoginManager(new EfWriterDal());
+        IAuthService authService = new AuthManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
+        Context c = new Context();
+        //WriterLoginManager wlm = new WriterLoginManager(new EfWriterDal());
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Index(Admin p)
+        public ActionResult Index(AdminLoginDto adminDto)
         {
-            Context c = new Context();
-            var adminuserinfo = c.Admins.FirstOrDefault(x=>x.AdminUserName==p.AdminUserName && x.AdminPassword==p.AdminPassword && x.AdminStatus==true);
-            if (adminuserinfo!=null)
+            
+            if (authService.AdminLogin(adminDto))
             {
                 //yönlendrime işlemleri
-                FormsAuthentication.SetAuthCookie(adminuserinfo.AdminUserName, false);
-                Session["AdminUserName"] = adminuserinfo.AdminUserName;
+                FormsAuthentication.SetAuthCookie(adminDto.AdminUsername, false);
+                Session["AdminUsername"] = adminDto.AdminUsername;
                 return RedirectToAction("Index","AdminCategory");
             }
             else
@@ -47,17 +53,20 @@ namespace MvcProje.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult WriterLogin(Writer p)
+        public ActionResult WriterLogin(WriterLoginDto writerDto)
         {
+            var response = Request["g-recaptcha-response"];
+            const string secret = "6LfbKk8bAAAAANkMjzLC_iAGX45a_J8RUWe1XYeQ";
+            var client = new WebClient();
+            var reply = client.DownloadString(
+                string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResult>(reply);
 
-            //Context c = new Context();
-            //var writeruserinfo = c.Writers.FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
-            var writeruserinfo = wlm.GetWriter(p.WriterMail,p.WriterPassword);
-            if (writeruserinfo != null)
+            if (authService.WriterLogin(writerDto)&&captchaResponse.Success)
             {
                 //yönlendrime işlemleri
-                FormsAuthentication.SetAuthCookie(writeruserinfo.WriterMail, false);
-                Session["WriterMail"] = writeruserinfo.WriterMail;
+                FormsAuthentication.SetAuthCookie(writerDto.WriterMail, false);
+                Session["WriterMail"] = writerDto.WriterMail;
                 return RedirectToAction("MyContent", "WriterPanelContent");
             }
             else
@@ -71,8 +80,14 @@ namespace MvcProje.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            Session.Abandon();
+            //Session.Abandon();
             return RedirectToAction("HomePage", "Home");
+        }
+        public ActionResult WriterLogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("AllHeading", "WriterPanel");
         }
     }
 }
