@@ -141,6 +141,14 @@
     <Compile Include="Migrations\202109292333383__adminNameValue.designer.cs">
       <DependentUpon>202109292333383__adminNameValue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109301604023__message_tbl_edit.cs" />
+    <Compile Include="Migrations\202109301604023__message_tbl_edit.designer.cs">
+      <DependentUpon>202109301604023__message_tbl_edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109301609487__contact_tbl_edit.cs" />
+    <Compile Include="Migrations\202109301609487__contact_tbl_edit.designer.cs">
+      <DependentUpon>202109301609487__contact_tbl_edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -202,6 +210,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109292333383__adminNameValue.resx">
       <DependentUpon>202109292333383__adminNameValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109301604023__message_tbl_edit.resx">
+      <DependentUpon>202109301604023__message_tbl_edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109301609487__contact_tbl_edit.resx">
+      <DependentUpon>202109301609487__contact_tbl_edit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

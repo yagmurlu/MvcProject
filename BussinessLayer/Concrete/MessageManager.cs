@@ -23,14 +23,49 @@ namespace BussinessLayer.Concrete
             return _messageDal.Get(x => x.MessageId == id);
         }
 
-        public List<Message> GetListInbox(string p)//Alıcı mail
+        public List<Message> GetListDraft(string session)//taslak
         {
-            return _messageDal.List(x=>x.RecevierMail== p);
+            return _messageDal.List(x => x.IsDraft == true && x.SenderMail == session);    
         }
 
-        public List<Message> GetListSendBox(string p)//Gönderen Mail
+        public List<Message> GetListImportant(string session)//önemli
         {
-            return _messageDal.List(x => x.SenderMail == p);
+            return _messageDal.List(x => x.IsImportant == true && x.RecevierMail == session);
+        }
+
+        public List<Message> GetListInbox(string session)//Alıcı mail
+        {
+            return _messageDal.List(x=>x.RecevierMail== session);
+        }
+
+        public List<Message> GetLisTrash()//çöp
+        {
+            return _messageDal.List(x => x.Trash == true);
+        }
+
+        public List<Message> GetListSendBox(string session)//Gönderen Mail
+        {
+            return _messageDal.List(x => x.SenderMail == session);
+        }
+
+        public List<Message> GetListSpam(string session)//spam
+        {
+            return _messageDal.List(x => x.IsSpam == true && x.RecevierMail == session);
+        }
+
+        public List<Message> GetReadList(string session)//okundu
+        {
+            return _messageDal.List(x => x.IsRead == true && x.RecevierMail == session);
+        }
+
+        public List<Message> GetUnReadList(string session)//okunmadı
+        {
+            return _messageDal.List(x => x.RecevierMail == session && x.IsRead == false);
+        }
+
+        public List<Message> IsDraft(string session)
+        {
+            return _messageDal.List(x => x.IsDraft == true && x.SenderMail == session);
         }
 
         public void MessageAddBL(Message message)
@@ -40,12 +75,12 @@ namespace BussinessLayer.Concrete
 
         public void MessageDelete(Message message)
         {
-            throw new NotImplementedException();
+            _messageDal.Delete(message);
         }
 
         public void MessageUpdate(Message message)
         {
-            throw new NotImplementedException();
+            _messageDal.Update(message);
         }
 
       

@@ -53,7 +53,7 @@ namespace MvcProje.Controllers
         //[AllowAnonymous]
         public ActionResult MyHeading(string p)
         {
-            int a = 1;
+            
             p = (string)Session["WriterMail"];
             var writeridinfo = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
             var values = hm.GetListByWriter(writeridinfo);

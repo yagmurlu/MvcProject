@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
 
 namespace MvcProje.Controllers
 {
@@ -19,13 +19,15 @@ namespace MvcProje.Controllers
         MessageManager messageManager = new MessageManager(new EfMessageDal());
         MessageValidator messageValidator = new MessageValidator();
         [Authorize]
-        public ActionResult Inbox(string p)
+        public ActionResult Inbox(int? page)
         {
-            var messageLists = messageManager.GetListInbox(p);
-            return View(messageLists);
+            string p = (string)Session["AdminMail"];
+            var messageList = messageManager.GetListInbox(p).ToPagedList(page ?? 1,8);
+            return View(messageList);
         }
-        public ActionResult SendBox(string p)
+        public ActionResult SendBox()
         {
+            string p = (string)Session["AdminMail"];
             var messageList = messageManager.GetListSendBox(p);
             return View(messageList);
         }
@@ -44,24 +46,86 @@ namespace MvcProje.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult NewMessage(Message p)
+        [HttpPost, ValidateInput(false)]
+        public ActionResult NewMessage(Message p,string menuName)
         {
+            string session = (string)Session["AdminMail"];
             ValidationResult results =messageValidator.Validate(p);
-            if (results.IsValid)
+            if (menuName=="send")
             {
-                p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                messageManager.MessageAddBL(p);
-                return RedirectToAction("SendBox");
+                if (results.IsValid)
+                {
+                    p.SenderMail = session;
+                    p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    messageManager.MessageAddBL(p);
+                    return RedirectToAction("SendBox");
+                }
+                else
+                {
+                    foreach (var item in results.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
+                }
+            }
+            else if (menuName=="draft")
+            {
+                return RedirectToAction("NewMessage");
+            }
+            return View();
+        }
+        public ActionResult DeleteMessage(int id)
+        {
+            var result = messageManager.GetById(id);
+            if (result.Trash==true)
+            {
+                result.Trash = false;
             }
             else
             {
-                foreach (var item in results.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
+                result.Trash = true;
             }
-            return View();
+            messageManager.MessageDelete(result);
+            return RedirectToAction("Inbox");
+        }
+        public ActionResult DraftMessages()
+        {
+            string session = (string)Session["AdminMail"];
+            var result = messageManager.IsDraft(session);
+            return View(result);
+        }
+        public ActionResult GetDraftDetails(int id)
+        {
+            var result = messageManager.GetById(id);
+            return View(result);
+        }
+        public ActionResult IsRead(int id)
+        {
+            var mesageValue = messageManager.GetById(id);
+            if (mesageValue.IsRead)
+            {
+                mesageValue.IsRead = false;
+            }
+            else
+            {
+                mesageValue.IsRead = true;
+            }
+            messageManager.MessageUpdate(mesageValue);
+            return RedirectToAction("Inbox");
+        }
+        public ActionResult IsImportant(int id)
+        {
+            var mesageValue = messageManager.GetById(id);
+            if (mesageValue.IsImportant)
+            {
+                mesageValue.IsImportant = false;
+            }
+            else
+            {
+                mesageValue.IsImportant = true;
+            }
+            messageManager.MessageUpdate(mesageValue);
+            return RedirectToAction("Inbox");
         }
     }
 }

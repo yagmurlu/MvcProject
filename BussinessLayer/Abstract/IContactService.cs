@@ -12,6 +12,7 @@ namespace BussinessLayer.Abstract
         List<Contact> GetList();
         void ContactAddBL(Contact contact);
         Contact GetById(int id);
+        Contact GetByIdContactAndSetRead(int id, bool read);
         void ContactDelete(Contact contact);
         void ContactUpdate(Contact contact);
     }

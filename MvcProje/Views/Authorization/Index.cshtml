@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@{ 
+@{
     string checkStatus = "";
     string statusColor = "";
     string roleColor = "";
@@ -22,64 +22,79 @@
         <th>#</th>
         <th>Kullanıcı Adı</th>
         <th>Yetki</th>
+        <th>Yetki Seviyesi</th>
         <th>Durum</th>
         <th>Düzenle</th>
         <th>Pasif Yap</th>
     </tr>
     @foreach (var item in Model)
     {
-<tr>
-    <td>@item.AdminId</td>
-    <td>@item.AdminName</td>
-    @*<td>@item.Role.RoleName</td>*@
-    <td>
-        @switch (item.Role.RoleName)
+        <tr>
+            <td>@item.AdminId</td>
+            <td>@item.AdminName</td>
+            <td>
 
-        {
-            case "A":
-                roleColor = "badge badge-pill badge-primary";
-                break;
-            case "B":
-                roleColor = "badge badge-pill badge-warning";
-                break;
-        }
-        <span class="@roleColor">@item.Role.RoleName</span>
-    </td>
-    <td>
-        @switch (item.AdminStatus)
-        {
-            case true:
-                statusColor = "badge badge-success";
-                break;
-            case false:
-                statusColor = "badge badge-danger";
-                break;
-        }
-        <span class="@statusColor">@item.AdminStatus</span>
-    </td>
-    <td><a href="/Authorization/EditAdmin/@item.AdminId" class="btn btn-warning"> Düzenle</a></td>
-    <td>
-        <a href="/Authorization/AdminStatus/@item.AdminId" class="btn btn-danger">
+                @switch (item.Role.RoleName)
 
-            <i class="fas fa-trash">
-            </i>
-            @if (item.AdminStatus == true)
-            {
-                checkStatus = "Pasif Yap";
+                {
+                    case "A":
+                        roleColor = "badge badge-pill badge-primary";
+                        break;
+                    case "B":
+                        roleColor = "badge badge-pill badge-warning";
+                        break;
+                }
+                <span class="@roleColor">@item.Role.RoleName</span>
+            </td>
+            <td>
 
-            }
-            else
-            {
+                @switch (item.Role.Description)
 
-                checkStatus = "Aktif Yap";
-            }
+                {
+                    case "Tam Yetki":
+                        roleColor = "badge badge-pill badge-light";
+                        break;
+                    case "Sınırlı Yetki":
+                        roleColor = "badge badge-pill badge-secondary";
+                        break;
+                }
+                <span class="@roleColor">@item.Role.Description</span>
+            </td>
+            <td>
+                @switch (item.AdminStatus)
+                {
+                    case true:
+                        statusColor = "badge badge-success";
+                        break;
+                    case false:
+                        statusColor = "badge badge-danger";
+                        break;
+                }
+                <span class="@statusColor">@item.AdminStatus</span>
+            </td>
+            <td><a href="/Authorization/EditAdmin/@item.AdminId" class="btn btn-warning"> Düzenle</a></td>
+            <td>
+                <a href="/Authorization/AdminStatus/@item.AdminId" class="btn btn-danger">
 
-            @checkStatus
+                    <i class="fas fa-trash">
+                    </i>
+                    @if (item.AdminStatus == true)
+                    {
+                        checkStatus = "Pasif Yap";
 
-        </a>
-    </td>
+                    }
+                    else
+                    {
 
-</tr>
+                        checkStatus = "Aktif Yap";
+                    }
+
+                    @checkStatus
+
+                </a>
+            </td>
+
+        </tr>
     }
 </table>
 

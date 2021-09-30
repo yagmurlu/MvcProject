@@ -9,10 +9,10 @@
 @using (Html.BeginForm("AddAdmin", "Authorization", FormMethod.Post))
 {
 <div class="form-group">
-    @Html.Label("Admin Adı:")
+    @Html.Label("Kullanıcı Adı:")
     @Html.TextBoxFor(x => x.AdminName, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.AdminName, "", new { @class = "text-primary" })
-    @Html.Label("Admin Kullanıcı Maili:")
+    @Html.Label("Admin Maili:")
     @Html.TextBoxFor(x => x.AdminUsername, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.AdminUsername, "", new { @class = "text-primary" })
     <br />

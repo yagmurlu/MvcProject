@@ -16,7 +16,7 @@ namespace MvcProje.Controllers
         MessageManager messageManager = new MessageManager(new EfMessageDal());
         ContactManager cm = new ContactManager(new EfContactDal());
         ContactValidator cv = new ContactValidator();
-        
+
         public ActionResult Index()
         {
             var contactValues = cm.GetList();
@@ -27,8 +27,9 @@ namespace MvcProje.Controllers
             var contactValues = cm.GetById(id);
             return View(contactValues);
         }
-        public PartialViewResult ContactPartial(string p)
+        public PartialViewResult ContactPartial()
         {
+            string p = (string)Session["AdminMail"];
             var contact = cm.GetList().Count();
             ViewBag.contact = contact;
 
@@ -38,15 +39,63 @@ namespace MvcProje.Controllers
             var receiverMail = messageManager.GetListInbox(p).Count();
             ViewBag.receiverMail = receiverMail;
 
-            //var draftMail = messageManager.GetListSendBox().Where(m => m.IsDraft == true).Count();
-            //ViewBag.draftMail = draftMail;
+            var draftMail = messageManager.GetListDraft(p).Count();
+            ViewBag.draftMail = draftMail;
+            var trashMail = messageManager.GetLisTrash().Count();
+            ViewBag.trashMail = trashMail;
 
-            //var readMessage = messageManager.GetMessagesInbox().Where(m => m.IsRead == true).Count();
-            //ViewBag.readMessage = readMessage;
+            var readMessage = messageManager.GetReadList(p).Count();
+            ViewBag.readMessage = readMessage;
 
-            //var unreadMessage = messageManager.GetAllRead().Count();
-            //ViewBag.unreadMessage = unreadMessage;
+            var unreadMessage = messageManager.GetUnReadList(p).Count();
+            ViewBag.unreadMessage = unreadMessage;
+
+            var importantMail = messageManager.GetListImportant(p).Count();
+            ViewBag.importantMail = importantMail;
+            var spamMail = messageManager.GetListSpam(p).Count();
+            ViewBag.spamMail = spamMail;
+
             return PartialView();
+        }
+        public PartialViewResult PartialMessageList()
+        {
+            return PartialView();
+        }
+        public PartialViewResult PartialMessageFooter()
+        {
+            return PartialView();
+        }
+        public PartialViewResult PartialMessageFooterButton()
+        {
+            return PartialView();
+        }
+        public ActionResult IsRead(int id)
+        {
+            var contactValue = cm.GetById(id);
+            if (contactValue.IsRead)
+            {
+                contactValue.IsRead = false;
+            }
+            else
+            {
+                contactValue.IsRead = true;
+            }
+            cm.ContactUpdate(contactValue);
+            return RedirectToAction("Index");
+        }
+        public ActionResult IsImportant(int id)
+        {
+            var contactValue = cm.GetById(id);
+            if (contactValue.IsImportant)
+            {
+                contactValue.IsImportant = false;
+            }
+            else
+            {
+                contactValue.IsImportant = true;
+            }
+            cm.ContactUpdate(contactValue);
+            return RedirectToAction("Index");
         }
     }
 }
