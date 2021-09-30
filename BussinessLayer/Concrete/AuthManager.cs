@@ -1,5 +1,6 @@
 ﻿using BussinessLayer.Abstract;
 using BussinessLayer.Utilities.Hashing;
+using EntityLayer.Concrete;
 using EntityLayer.Dto;
 using System;
 using System.Collections.Generic;
@@ -21,18 +22,28 @@ namespace BussinessLayer.Concrete
             _writerService = writerService;
         }
 
-        public void AdminRegister(string adminMail, string password)
+        public void AdminRegister( string adminName,string adminMail, string password ,int roleId)
         {
-            throw new NotImplementedException();
+            byte[] userNameHash, passwordHash, passwordSalt;
+            HashingHelper.AdminCreatePasswordHash(adminMail, password, out userNameHash, out passwordHash, out passwordSalt);
+            var admin = new Admin
+            {
+                AdminName= adminName,
+                AdminUserName = userNameHash,
+                AdminPasswordHash = passwordHash,
+                AdminPasswordSalt = passwordSalt,
+                RoleId=roleId
+            };
+            _adminService.AdminAddBL(admin);
         }
 
         public bool AdminLogin(AdminLoginDto adminDto)
         {
             using (var crypto=new System.Security.Cryptography.HMACSHA512())
             {
-                var hashMail = crypto.ComputeHash(Encoding.UTF8.GetBytes(adminDto.AdminUsername));
-                var admin = _adminService.GetList();
-                foreach (var item in admin)
+                var userNameHash = crypto.ComputeHash(Encoding.UTF8.GetBytes(adminDto.AdminUsername));
+                var user = _adminService.GetList();
+                foreach (var item in user)
                 {
                     if (HashingHelper.AdminVerifyPasswordHash(adminDto.AdminUsername,adminDto.AdminPassword,item.AdminUserName,item.AdminPasswordHash,item.AdminPasswordSalt))
                     {
@@ -45,12 +56,33 @@ namespace BussinessLayer.Concrete
 
         public bool WriterLogin(WriterLoginDto writerDto)
         {
-            throw new NotImplementedException();
+            using (var crypto = new System.Security.Cryptography.HMACSHA512())
+            {
+
+                var writer = _writerService.GetList();
+                foreach (var item in writer)
+                {
+                    if (HashingHelper.WriterVerifyPasswordHash(writerDto.WriterPassword,item.WriterPasswordHash,item.WriterPasswordSalt))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
 
         public void WriterRegister(string writerMail, string writerPassword)
         {
-            throw new NotImplementedException();
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.WriterCreatePasswordHash(writerPassword, out passwordHash, out passwordSalt);
+            var writer = new Writer
+            {
+                WriterMail=writerMail,
+                WriterPasswordHash = passwordHash,
+                WriterPasswordSalt = passwordSalt
+                
+            };
+            _writerService.WriterAdd(writer);
         }
     }
 }

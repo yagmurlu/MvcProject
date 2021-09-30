@@ -23,16 +23,18 @@
         <th>Kullanıcı Adı</th>
         <th>Yetki</th>
         <th>Durum</th>
+        <th>Düzenle</th>
         <th>Pasif Yap</th>
-        <th>Yetkisini Değiştir</th>
     </tr>
     @foreach (var item in Model)
     {
 <tr>
     <td>@item.AdminId</td>
-    <td>@item.AdminUserName</td>
-    @*<td>
+    <td>@item.AdminName</td>
+    @*<td>@item.Role.RoleName</td>*@
+    <td>
         @switch (item.Role.RoleName)
+
         {
             case "A":
                 roleColor = "badge badge-pill badge-primary";
@@ -41,9 +43,8 @@
                 roleColor = "badge badge-pill badge-warning";
                 break;
         }
-        <span class="@roleColor">@item.AdminRole</span>
-    </td>*@
-
+        <span class="@roleColor">@item.Role.RoleName</span>
+    </td>
     <td>
         @switch (item.AdminStatus)
         {
@@ -56,7 +57,7 @@
         }
         <span class="@statusColor">@item.AdminStatus</span>
     </td>
-    <td><a href="/Authorization/EditAdmin/@item.AdminId" class="btn btn-warning"> Değiştir</a></td>
+    <td><a href="/Authorization/EditAdmin/@item.AdminId" class="btn btn-warning"> Düzenle</a></td>
     <td>
         <a href="/Authorization/AdminStatus/@item.AdminId" class="btn btn-danger">
 

@@ -11,6 +11,7 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int AdminId { get; set; }
+        [StringLength(50)]
         public string AdminName { get; set; }
         public bool AdminStatus { get; set; }
         public byte[] AdminUserName { get; set; }

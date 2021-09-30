@@ -21,7 +21,7 @@ namespace MvcProje.Controllers
     {
         // GET: Login
         IAuthService authService = new AuthManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
-        Context c = new Context();
+        //Context c = new Context();
         //WriterLoginManager wlm = new WriterLoginManager(new EfWriterDal());
         [HttpGet]
         public ActionResult Index()

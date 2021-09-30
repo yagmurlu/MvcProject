@@ -15,8 +15,7 @@ namespace MvcProje.Controllers
     public class AdminCategoryController : Controller
     {
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
-        HeadingManager hm = new HeadingManager(new EfHeadingDal());
-        [Authorize(Roles = "A")]
+        //[Authorize(Roles = "A")]
         public ActionResult Index(int P = 1)
         {
             var categoryValues = cm.GetList().ToPagedList(P,10);

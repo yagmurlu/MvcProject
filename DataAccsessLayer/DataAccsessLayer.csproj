@@ -133,9 +133,13 @@
     <Compile Include="Migrations\202109201436094_Dto.designer.cs">
       <DependentUpon>202109201436094_Dto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109212203397__hash_Admin_Writer.cs" />
-    <Compile Include="Migrations\202109212203397__hash_Admin_Writer.designer.cs">
-      <DependentUpon>202109212203397__hash_Admin_Writer.cs</DependentUpon>
+    <Compile Include="Migrations\202109271843359__hash_Admin_Writer.cs" />
+    <Compile Include="Migrations\202109271843359__hash_Admin_Writer.designer.cs">
+      <DependentUpon>202109271843359__hash_Admin_Writer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109292333383__adminNameValue.cs" />
+    <Compile Include="Migrations\202109292333383__adminNameValue.designer.cs">
+      <DependentUpon>202109292333383__adminNameValue.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,8 +197,11 @@
     <EmbeddedResource Include="Migrations\202109201436094_Dto.resx">
       <DependentUpon>202109201436094_Dto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109212203397__hash_Admin_Writer.resx">
-      <DependentUpon>202109212203397__hash_Admin_Writer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109271843359__hash_Admin_Writer.resx">
+      <DependentUpon>202109271843359__hash_Admin_Writer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109292333383__adminNameValue.resx">
+      <DependentUpon>202109292333383__adminNameValue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

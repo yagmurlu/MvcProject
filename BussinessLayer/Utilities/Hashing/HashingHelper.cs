@@ -42,14 +42,14 @@ namespace BussinessLayer.Utilities.Hashing
                 return true;
             }
         }
-        public static bool AdminVerifyPasswordHash(string adminMail,byte[] adminMailHash)
+        public static bool AdminVerifyPasswordHash(string userName, byte[] userNameHash)
         {
-            using (var hmac=new System.Security.Cryptography.HMACSHA512())
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
-                var computedAdminMailHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminMail));
+                var computedAdminMailHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(userName));
                 for (int i = 0; i < computedAdminMailHash.Length; i++)
                 {
-                    if (computedAdminMailHash[i]!=adminMailHash[i])
+                    if (computedAdminMailHash[i] != userNameHash[i])
                     {
                         return false;
                     }
@@ -57,13 +57,13 @@ namespace BussinessLayer.Utilities.Hashing
                 return true;
             }
         }
-        public static string AdminPasswordDecode(string password)
-        {
-            UTF8Encoding encoder = new UTF8Encoding();
-            SHA512Managed sha512Hasher = new SHA512Managed();
-            byte[] hashedDataBytes = sha512Hasher.ComputeHash(encoder.GetBytes(password));
-            return Convert.ToBase64String(hashedDataBytes);
-        }
+        //public static string AdminPasswordDecode(string password)
+        //{
+        //    UTF8Encoding encoder = new UTF8Encoding();
+        //    SHA512Managed sha512Hasher = new SHA512Managed();
+        //    byte[] hashedDataBytes = sha512Hasher.ComputeHash(encoder.GetBytes(password));
+        //    return Convert.ToBase64String(hashedDataBytes);
+        //}
         //Writer Hashing
         public static void WriterCreatePasswordHash(string password,out byte[] passwordHash,out byte[] passwordSalt)
         {

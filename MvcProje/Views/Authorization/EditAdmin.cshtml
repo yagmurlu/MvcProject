@@ -11,16 +11,17 @@
 @using (Html.BeginForm("EditAdmin", "Authorization", FormMethod.Post))
 {
 <div class="form-group">
-    @Html.HiddenFor(x => x.AdminId, new { @class = "form-control" })
+    @Html.HiddenFor(c => c.AdminId, new { @class = "form-control" })
+    @Html.HiddenFor(c => c.AdminPasswordHash, new { @class = "form-control" })
+    @Html.HiddenFor(c => c.AdminPasswordSalt, new { @class = "form-control" })
+    @Html.HiddenFor(c => c.AdminUserName, new { @class = "form-control" })
     <br />
-    @Html.Label("Kullanıcı Adı")
-    @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control" })
-    <br />
-    @Html.Label("Şifre")
-    @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
+    @Html.Label("Admin Kullanıcı Adı")
+    @Html.TextBoxFor(c => c.AdminName, new { @class = "form-control" })
     <br />
     @Html.Label("Rol")
-    @Html.DropDownListFor(x => x.AdminRole, (List<SelectListItem>)ViewBag.vla, new { @class = "form-control" })
+    @Html.DropDownListFor(c => c.RoleId,(List<SelectListItem>)ViewBag.vla, new { @class = "form-control" })
+    <br />
     <button class="btn btn-success" id="btnEdit">Güncelle</button>
     <script>
         $('#btnEdit').click(function () {

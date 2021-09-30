@@ -5,7 +5,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Admin Login</title>
+    <title>Admin İşlemleri</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,11 +21,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">MVC Proje Kampı Admin Girişi</h2>
-                   
-                   
+                    <h2 class="heading-section">Admin Kayıt Sayfası</h2>
+
+
                 </div>
-               
+
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
@@ -33,8 +33,13 @@
                         <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/AdminLTE-3.0.4/login-form-19/images/bg.jpg);"></div>
                         <h3 class="text-center mb-0">Hoş Geldiniz</h3>
                         <p class="text-center" style="color:red">@ViewData["ErrorMessage"]</p>
-                        @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                        @using (Html.BeginForm("Index", "Register", FormMethod.Post))
                         {
+                            <div class="form-group">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+                                <input type="text" class="form-control" name="AdminName" placeholder="Adı" required>
+                            </div>
+
                             <div class="form-group">
                                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                                 <input type="text" class="form-control" name="AdminUserName" placeholder="Mail" required>
@@ -43,13 +48,9 @@
                                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
                                 <input type="password" class="form-control" name="AdminPassword" placeholder="Şifre" required>
                             </div>
-                            <div class="form-group d-md-flex">
-                                <div class="w-100 text-md-right">
-                                    <a href="#">Şifremi Unuttum</a>
-                                </div>
-                            </div>
+
                             <div class="form-group">
-                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Giriş Yap</button>
+                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Kayıt Ol</button>
                             </div>
 
                             <div class="w-100 text-center mt-4 text">
