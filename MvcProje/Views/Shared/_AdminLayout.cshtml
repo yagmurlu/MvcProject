@@ -234,14 +234,15 @@ to get the desired effect
             <!-- Main content -->
             <div class="content">
                 @RenderBody()
-                <!-- /.container-fluid -->
             </div>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->    
     </div>
-    <!-- ./wrapper -->
-    <!--~/AdminLTE-3.0.4/ bu yolu aşağıda ekledim css için-->
 
+    <script>
+        $(function () {
+            $('#compose-textarea').summernote()
+        })
+    </script>
+    @RenderSection("Editor",false)
 </body>
 </html>

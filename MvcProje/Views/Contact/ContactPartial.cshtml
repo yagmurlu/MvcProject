@@ -21,10 +21,32 @@
                             <span class="badge bg-primary float-right">@ViewBag.contact</span>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item has-treeview">
                         <a href="/Message/Inbox/" class="nav-link">
-                            <i class="fas fa-inbox"></i> Gelen Mesajlar
-                            <span class="badge bg-primary float-right">@ViewBag.contact</span>
+                            <i class="fas fa-inbox" onclick="location.href='/Message/Inbox'"></i> Gelen Mesajlar
+                            <i class="right fas fa-angellist"></i>
+                            <span class="badge bg-primary float-right">@ViewBag.receiverMail</span>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-inbox"></i> Okunmamış Mesajlar
+                                    &nbsp;<span class="badge bg-primary float-right">@ViewBag.unreadMessage</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-inbox"></i> Okunan Mesajlar
+                                    &nbsp; <span class="badge bg-primary float-right">@ViewBag.readMessage</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-inbox"></i> Önemli
+                            <span class="badge bg-primary float-right">@ViewBag.importantMail</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -34,19 +56,21 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/Message/DraftMessages/" class="nav-link">
                             <i class="far fa-file-alt"></i> Taslaklar
+                            <span class="badge bg-warning float-right">@ViewBag.draftMail</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-filter"></i> Spam
-                            <span class="badge bg-warning float-right">65</span>
+                            <span class="badge bg-warning float-right">@ViewBag.spamMail</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="far fa-trash-alt"></i> Çöp Kutusu
+                            <span class="badge bg-warning float-right">@ViewBag.trashMail</span>
                         </a>
                     </li>
                 </ul>

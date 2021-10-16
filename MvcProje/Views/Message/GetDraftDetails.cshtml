@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.Message
+@{
+    ViewBag.Title = "GetDraftDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Taslak Mesaj Detayları</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            @Html.Action("ContactPartial", "Contact")
+
+
+            <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Mesaj Oku</h3>
+                        <div class="card-tools">
+                            <input type="text" class="form-control" placeholder="Mail Kutusunda Ara">
+                            <div class="input-group-append">
+                                <div class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="mailbox-read-info">
+                            <h5>Konu: @Html.DisplayFor(x => x.Subject)</h5>
+                            <br />
+                            <h6>
+                                Gönderen: @Html.DisplayFor(x => x.RecevierMail)
+                                <span class="mailbox-read-time float-right"><i>@Model.MessageDate.ToString("dd-MMMM-yyyy")</i></span>
+                            </h6>
+                        </div>
+                        <div class="mailbox-read-message">
+                            <br />
+                            <p>
+                                @Html.Raw(Model.MessageContent)
+                            </p>
+
+                        </div>
+                        @Html.Action("PartialMessageFooterButton","Contact")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

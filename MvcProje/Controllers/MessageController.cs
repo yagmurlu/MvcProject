@@ -21,13 +21,13 @@ namespace MvcProje.Controllers
         [Authorize]
         public ActionResult Inbox(int? page)
         {
-            string p = (string)Session["AdminMail"];
+            string p = (string)Session["AdminUserName"];
             var messageList = messageManager.GetListInbox(p).ToPagedList(page ?? 1,8);
             return View(messageList);
         }
         public ActionResult SendBox()
         {
-            string p = (string)Session["AdminMail"];
+            string p = (string)Session["AdminUserName"];
             var messageList = messageManager.GetListSendBox(p);
             return View(messageList);
         }
@@ -49,7 +49,7 @@ namespace MvcProje.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult NewMessage(Message p,string menuName)
         {
-            string session = (string)Session["AdminMail"];
+            string session = (string)Session["AdminUserName"];
             ValidationResult results =messageValidator.Validate(p);
             if (menuName=="send")
             {
@@ -69,6 +69,24 @@ namespace MvcProje.Controllers
                 }
             }
             else if (menuName=="draft")
+            {
+                if (results.IsValid)
+                {
+                    p.SenderMail = session;
+                    p.IsDraft = true;
+                    p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    messageManager.MessageAddBL(p);
+                    return RedirectToAction("DraftMessages");
+                }
+                else
+                {
+                    foreach (var item in results.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
+                }
+            }
+            else if (menuName=="cancel")
             {
                 return RedirectToAction("NewMessage");
             }
@@ -90,7 +108,7 @@ namespace MvcProje.Controllers
         }
         public ActionResult DraftMessages()
         {
-            string session = (string)Session["AdminMail"];
+            string session = (string)Session["AdminUserName"];
             var result = messageManager.IsDraft(session);
             return View(result);
         }

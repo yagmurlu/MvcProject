@@ -26,10 +26,11 @@ namespace MvcProje.Controllers
         {
             var contactValues = cm.GetById(id);
             return View(contactValues);
+        
         }
         public PartialViewResult ContactPartial()
         {
-            string p = (string)Session["AdminMail"];
+            string p = (string)Session["AdminUserName"];
             var contact = cm.GetList().Count();
             ViewBag.contact = contact;
 
