@@ -26,7 +26,7 @@ namespace BussinessLayer.Concrete
 
         public void CategoryDelete(Category category)
         {
-            _categoryDal.Delete(category);
+            _categoryDal.Update(category);
         }
 
         public void CategoryUpdate(Category category)
@@ -39,25 +39,6 @@ namespace BussinessLayer.Concrete
             return _categoryDal.Get(x => x.CategoryID == id);
         }
 
-        // GenericRepository<Category> repo = new GenericRepository<Category>();
-
-        //Listeleme işlemi
-        //public List<Category> GetAllBL()
-        //{
-        //    return repo.List();
-        //}
-        //Category tablosuna şartlı ekleme yapma
-        //public void CategoryAddBL(Category p)
-        //{
-        //    //if (p.CategoryName==""||p.CategoryName.Length<=3||p.CategoryDescription==""|| p.CategoryName.Length >= 51)
-        //    //{
-        //    //    //hata mesajı
-        //    //}
-        //    //else
-        //    //{
-        //        repo.Insert(p);
-        //    //}
-        //}
         public List<Category> GetList()
         {
             return _categoryDal.List();

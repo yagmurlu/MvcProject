@@ -1,22 +1,12 @@
 ﻿@using EntityLayer.Concrete
-@model List<Content>
+@model List<Heading>
 @{
-    ViewBag.Title = "GettAllContent";
+    ViewBag.Title = "HeadingByWriter";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@using (Html.BeginForm("GettAllContent", "Content", FormMethod.Post))
-{
-    <br />
-    <h2 style="color:red;margin-left:500px;">Yazılan Tüm Yazılar</h2>
-    <br />
-    <p style="margin-left:500px">
-        @Html.TextBox("p")
-        <input type="submit" value="Ara" />
-    </p>
-}
+
 <!DOCTYPE html>
 <html>
-
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -32,18 +22,16 @@
                             @foreach (var item in Model)
                             {
                                 <div class="time-label">
-                                    <span class="bg-success">@(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy"))</span>
-                                    <span class="bg-blue">@item.Heading.HeadingName</span>
-                                    <span class="bg-gradient-purple">@item.Writer.WriterName @item.Writer.WriterSurName</span>
+                                    <span class="bg-success">@(((DateTime)item.HeadingDate).ToString("dd-MMM-yyyy"))</span>
                                 </div>
                                 <!-- /.timeline-label -->
                                 <!-- timeline item -->
                                 <div>
                                     <i class="fas fa-comment bg-yellow"></i>
                                     <div class="timeline-item">
-
+                                        <h3 class="timeline-header"><a href="/Heading/HeadingByCategory/@item.CategoryID">@item.Category.CategoryName</a></h3>
                                         <div class="timeline-body">
-                                            @item.ContentValue
+                                            @item.HeadingName
                                         </div>
 
                                     </div>
@@ -62,4 +50,3 @@
     <!-- ./wrapper -->
 </body>
 </html>
-

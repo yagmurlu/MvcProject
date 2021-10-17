@@ -12,6 +12,7 @@
 }
 <!DOCTYPE html>
 <br />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <a href="/Heading/Index/" class="btn btn-outline-dark" style="position:absolute;left:280px;width:210px">Tüm Başlıklar</a>
 <a href="/Heading/ActiveHeadingList/" class="btn btn-outline-dark" style="position:absolute;left:500px;width:210px">Yayında Olan Başlıklar</a>
 <a href="/Heading/AddHeading/" class="btn btn-outline-success" style="position:absolute;right:30px;width:210px">Yeni Başlık</a>
@@ -34,7 +35,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"style="color:blue;margin-left:450px;">BAŞLIK İŞLEMLERİ</h3>
+                <h2 class="card-title"style="color:deeppink;margin-left:500px;"><b>BAŞLIK İŞLEMLERİ</b></h2>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -48,7 +49,7 @@
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>
-                        <tr>
+                        <tr class="w3-pink">
                             <th style="width: 1%">
                                 #
                             </th>
@@ -128,7 +129,7 @@
                                 </td>
 
                                 <td class="project-state">
-                                    <span class="@color">@item.Category.CategoryName</span>
+                                    <span class="@color" ><a style="color:black" href="/Heading/HeadingByCategory/@item.CategoryID">@item.Category.CategoryName</a></span>
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.HeadingID">

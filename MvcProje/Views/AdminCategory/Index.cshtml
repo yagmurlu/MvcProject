@@ -7,40 +7,124 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 style="color:purple;margin-left:450px;">KATEGORİLER</h1>
+@{ 
+    string checkStatus = "";
+    string statusColor = "";
+}
+<!DOCTYPE html>
+<br />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<a href="/AdminCategory/AddCategory/" class="btn btn-outline-success" style="position:absolute;right:30px;width:210px">Yeni Kategori</a>
+<br />
+<html>
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
             </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title" style="color:red;margin-left:500px;"><b>KATEGORİLER</b></h2>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr class="w3-red">
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Kategori Adı
+                            </th>
+                            <th style="width: 10%">
+                                Durum
+                            </th>
+                            <th style="width: 20%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            
+                            <tr>
+                                <td>
+                                    @item.CategoryID
+                                </td>
+                                <td>
+                                    <b>
+                                        @item.CategoryName
+                                    </b>
+                                    <br />
+                                </td>    
+                                <td>
+                                    @switch (item.CategoryStatus)
+                                    {
+                                        case true:
+                                            statusColor = "badge badge-success";
+                                            break;
+                                        case false:
+                                            statusColor = "badge badge-danger";
+                                            break;
+                                    }
+                                    <span class="@statusColor">@item.CategoryStatus</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    
+                                    <a class="btn btn-warning btn-sm" href="/AdminCategory/EditCategory/@item.CategoryID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a id="btn" class="btn btn-danger btn-sm" href="/AdminCategory/StatusCategory/@item.CategoryID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        @if (item.CategoryStatus == true)
+                                        {
+                                            checkStatus = "Pasif Yap";
+
+                                        }
+                                        else
+                                        {
+
+                                            checkStatus = "Aktif Yap";
+                                        }
+
+                                        @checkStatus
+
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
         </div>
-    </div>
-</section>
-<br />
-<a href="/AdminCategory/AddCategory" class="btn btn-info">Yeni Kategori</a>
-<br />
-<br />
-<table class="table table-hover">
+        <!-- /.card -->
+    </section>
+</body>
+</html>
 
-    <tr>
-        <th>#</th>
-        <th>Kategori Adı</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-        <th>Başlıklar</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.CategoryID</td>
-            <td>@item.CategoryName</td>
-            <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
-            <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-warning">Güncelle</a></td>
-            <td><a href="/AdminCategory/CategoryHeading/@item.CategoryID" class="btn btn-primary">Başlıklar</a></td>
-        </tr>
-    }
-</table>
 @Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
 {
     LiElementClasses = new List<string>

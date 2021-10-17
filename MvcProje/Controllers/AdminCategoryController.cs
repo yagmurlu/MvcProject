@@ -21,13 +21,6 @@ namespace MvcProje.Controllers
             var categoryValues = cm.GetList().ToPagedList(P,10);
             return View(categoryValues);
         }
-        //public ActionResult CategoryHeading(int id)
-        //{
-        //    //p = (string)Session["WriterMail"];
-        //    //var writeridinfo = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
-        //    //var values = hm.GetListByWriter(writeridinfo);
-        //    //return View(values);
-        //}
         [HttpGet]
         public ActionResult AddCategory()
         {
@@ -55,6 +48,7 @@ namespace MvcProje.Controllers
         public ActionResult DeleteCategory(int id)
         {
             var categoryvalue = cm.GetById(id);
+            categoryvalue.CategoryStatus = false;
             cm.CategoryDelete(categoryvalue);
             return RedirectToAction("Index"); // Go to INDEX
         }
@@ -70,6 +64,24 @@ namespace MvcProje.Controllers
             cm.CategoryUpdate(p);
             return RedirectToAction("Index");
         }
+        public ActionResult StatusCategory(int id)
+        {
+            var headingValue = cm.GetById(id);
+            if (headingValue.CategoryStatus == false)
+            {
+
+                headingValue.CategoryStatus = true;
+                cm.CategoryDelete(headingValue);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                headingValue.CategoryStatus = false;
+                cm.CategoryDelete(headingValue);
+                return RedirectToAction("Index");
+            }
+        }
+   
     }
 
 }

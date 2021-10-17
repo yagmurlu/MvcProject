@@ -36,14 +36,20 @@
                         @using (Html.BeginForm("WriterRegister", "Register", FormMethod.Post))
                         {
                             <div class="form-group">
-                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                                <input type="text" class="form-control" name="AdminUserName" placeholder="Mail" required>
+                                <input type="text" class="form-control" name="WriterName" placeholder="İsim">
+                            
                             </div>
                             <div class="form-group">
-                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
-                                <input type="password" class="form-control" name="AdminPassword" placeholder="Şifre" required>
+                                <input type="text" class="form-control" name="WriterSurname" placeholder="Soyisim">
+                       
                             </div>
-
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="WriterMail" placeholder="Mail" required>
+                            </div>
+                            <div class="form-group">
+                                <input id="password-field" type="password" class="form-control" name="WriterPassword" placeholder="Parola" required>
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn form-control btn-primary rounded submit px-3">Kayıt Ol</button>
                             </div>

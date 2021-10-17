@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.About
+@{
+    ViewBag.Title = "EditAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<br />
+<h2>Not Düzenleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("EditAbout", "About", FormMethod.Post))
+{
+    <div class="form-group">
+
+        @Html.HiddenFor(x => x.AboutID, new { @class = "form-control" })
+        <br /><br />
+        @Html.Label("Not Başlığı")
+        @Html.TextBoxFor(x => x.AboutDetails2, new { @class = "form-control" })
+        <br /><br />
+        @Html.Label("İçerik")
+        @Html.TextAreaFor(x => x.AboutDetails1, new { @class = "form-control" })
+        <br /><br />
+        <button class="btn btn-success" id="btnEdit">Güncelle</button>
+        <script>
+        $('#btnEdit').click(function () {
+            swal("Güncellendi!", "Not Başarılı Bir Şekilde Güncellendi!", "success");
+        });
+        </script>
+    </div>
+}

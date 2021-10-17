@@ -12,9 +12,9 @@ namespace EntityLayer.Concrete
         [Key]
         public int AboutID { get; set; }
         [StringLength(1000)]
-        public string AboutDetails1 { get; set; }
+        public string AboutDetails1 { get; set; }//İçerik
         [StringLength(1000)]
-        public string AboutDetails2 { get; set; }
+        public string AboutDetails2 { get; set; }//İçerik Başlığı
         [StringLength(100)]
         public string AboutImage1 { get; set; }
         [StringLength(100)]

@@ -19,9 +19,9 @@ namespace MvcProje.Controllers
         WriterManager wm = new WriterManager(new EfWriterDal());
         // GET: Heading
 
-        public ActionResult Index(int p=1)
+        public ActionResult Index(int p = 1)
         {
-            var HeadingValues = hm.GetList().ToPagedList(p,10);
+            var HeadingValues = hm.GetList().ToPagedList(p, 10);
             return View(HeadingValues);
         }
         public ActionResult HeadingReport()
@@ -102,10 +102,20 @@ namespace MvcProje.Controllers
                 return RedirectToAction("Index");
             }
         }
-        public ActionResult ActiveHeadingList(int p=1)
+        public ActionResult ActiveHeadingList(int p = 1)
         {
-            var heading = hm.GetListHeadingTrue().ToPagedList(p,10);
+            var heading = hm.GetListHeadingTrue().ToPagedList(p, 10);
             return View(heading);
+        }
+        public ActionResult HeadingByWriter(int id)
+        {
+            var headingValue = hm.GetListByWriter(id);
+            return View(headingValue);
+        }
+        public ActionResult HeadingByCategory(int id)
+        {
+            var headingValue = hm.GetLİstCategory(id);
+            return View(headingValue);
         }
     }
 }

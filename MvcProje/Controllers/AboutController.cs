@@ -33,5 +33,17 @@ namespace MvcProje.Controllers
         {
             return PartialView();
         }
+        [HttpGet]
+        public ActionResult EditAbout(int id)
+        {
+            var aboutValue = aboutManager.GetById(id);
+            return View(aboutValue);
+        }
+        [HttpPost]
+        public ActionResult EditAbout(About p)
+        {
+            aboutManager.AboutUpdate(p);
+            return RedirectToAction("Index");
+        }
     }
 }
