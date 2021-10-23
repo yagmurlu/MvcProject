@@ -31,13 +31,13 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult Index(AdminLoginDto adminDto)
         {
-            
+
             if (authService.AdminLogin(adminDto))
             {
                 //yönlendrime işlemleri
                 FormsAuthentication.SetAuthCookie(adminDto.AdminUsername, false);
                 Session["AdminUsername"] = adminDto.AdminUsername;
-                return RedirectToAction("Index","AdminCategory");
+                return RedirectToAction("Index", "Heading");
             }
             else
             {
@@ -45,7 +45,7 @@ namespace MvcProje.Controllers
                 ViewData["ErrorMessage"] = "Kullanıcı Adı veya Parola Yanlış!";
                 return View();
             }
-           
+
         }
         [HttpGet]
         public ActionResult WriterLogin()
@@ -62,7 +62,7 @@ namespace MvcProje.Controllers
                 string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
             var captchaResponse = JsonConvert.DeserializeObject<CaptchaResult>(reply);
 
-            if (authService.WriterLogin(writerDto)&&captchaResponse.Success)
+            if (authService.WriterLogin(writerDto) && captchaResponse.Success)
             {
                 //yönlendrime işlemleri
                 FormsAuthentication.SetAuthCookie(writerDto.WriterMail, false);
@@ -75,7 +75,7 @@ namespace MvcProje.Controllers
                 ViewData["ErrorMessage"] = "Kullanıcı Adı veya Parola Yanlış!";
                 return RedirectToAction("WriterLogin");
             }
-           
+
         }
         public ActionResult LogOut()
         {

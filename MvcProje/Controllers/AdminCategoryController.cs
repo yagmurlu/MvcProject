@@ -12,10 +12,12 @@ using PagedList;
 
 namespace MvcProje.Controllers
 {
+    [Authorize]
     public class AdminCategoryController : Controller
     {
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
-        //[Authorize(Roles = "A")]
+
+        
         public ActionResult Index(int P = 1)
         {
             var categoryValues = cm.GetList().ToPagedList(P,10);

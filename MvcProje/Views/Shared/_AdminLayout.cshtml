@@ -11,8 +11,6 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>ASP.NET İLE MVC</title>
-    <!-- REQUIRED CSS STYLES START-->
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
     <!-- IonIcons -->
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -24,9 +22,7 @@
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <!-- REQUIRED CSS STYLES END-->
-    <!-- REQUIRED SCRIPTS START-->
-    <!-- jQuery -->
+
     <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -35,33 +31,17 @@
     <!-- AdminLTE App -->
     <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
 
-    <!-- OPTIONAL SCRIPTS -->
+
     <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
 
-    <!-- Summernote -->
     <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote.min.js"></script>
     <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- REQUIRED SCRIPTS END-->
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        
-        <!-- Navbar -->
-        
-        <!-- /.navbar -->
-        <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
@@ -72,12 +52,12 @@ to get the desired effect
 
             <!-- Sidebar -->
             <div class="sidebar">
-                
+
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
+                    @*<div class="image">
+                            <img src="#" class="img-circle elevation-2" alt="User Image">
+                        </div>*@
                     <div class="info">
                         <a href="#" class="d-block">Aleyna Yağmur TÜMTÜRK</a>
                     </div>
@@ -86,7 +66,6 @@ to get the desired effect
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                       
                             <li class="nav-item has-treeview">
                                 <a href="/AdminCategory/Index/" class="nav-link">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -94,9 +73,8 @@ to get the desired effect
                                         Kategoriler
                                     </p>
                                 </a>
-
                             </li>
-                        
+
                         <li class="nav-item">
                             <a href="/Heading/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -158,11 +136,11 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
-                                <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview">
                             <a href="/Heading/HeadingReport/" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>
                                 <p>
-                                   Raporlar  
+                                    Raporlar
                                 </p>
                             </a>
                         </li>
@@ -174,6 +152,8 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
+                        @if (User.IsInRole("A"))
+                        {
                         <li class="nav-item">
                             <a href="/Authorization/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-calendar-alt"></i>
@@ -182,6 +162,7 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
+                        }
                         <li class="nav-item">
                             <a href="/Gallery/Index/" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>
@@ -243,6 +224,6 @@ to get the desired effect
             $('#compose-textarea').summernote()
         })
     </script>
-    @RenderSection("Editor",false)
+    @RenderSection("Editor", false)
 </body>
 </html>

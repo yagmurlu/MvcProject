@@ -35,14 +35,16 @@ namespace MvcProje.Controllers
         public ActionResult WriterRegister(WriterLoginDto writerLogin)
         {
             authService.WriterRegister
-                (writerLogin.WriterName,
+                (
+                writerLogin.WriterName,
                 writerLogin.WriterSurname,
                 writerLogin.WriterImage,
                 writerLogin.WriterAbout,
                 writerLogin.WriterMail,
                 writerLogin.WriterPassword,
                 writerLogin.Title,
-                writerLogin.WriterStatus=true
+                writerLogin.WriterStatus
+                
                 );
             return RedirectToAction("MyContent", "WriterPanelContent");
         }

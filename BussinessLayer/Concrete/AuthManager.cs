@@ -71,23 +71,24 @@ namespace BussinessLayer.Concrete
             }
         }
 
-        public void WriterRegister(string writerName,string writerSurname,string image,string about,string writerMail, string writerPassword,string title,bool writerStatus)
+        public void WriterRegister(string name, string surname,
+           string ımage, string about, string writerMail, string writerPassword, string title,
+           bool status)
         {
-            byte[] passwordHash, passwordSalt;
+            byte[]  passwordHash, passwordSalt;
           
             HashingHelper.WriterCreatePasswordHash(writerPassword, out passwordHash, out passwordSalt);
             var writer = new Writer
             {
-                WriterName=writerName,
-                WriterSurName=writerSurname,
-                WriterImage=image,
-                WriterAbout=about,
-                WriterMail=writerMail,
+                WriterName = name,
+                WriterSurName = surname,
+                WriterImage = ımage,
+                WriterAbout = about,
+                WriterMail = writerMail,
                 WriterPasswordHash = passwordHash,
                 WriterPasswordSalt = passwordSalt,
-                WriterTıtle=title,
-                WriterStatus=writerStatus
-                
+                WriterTıtle = title,
+                WriterStatus=status
             };
             _writerService.WriterAdd(writer);
         }

@@ -11,14 +11,14 @@ using System.Web.Mvc;
 
 namespace MvcProje.Controllers
 {
-
+    [Authorize(Roles = "B")]
     public class AuthorizationController : Controller
     {
         IAuthService authService = new AuthManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
         AdminManager adm = new AdminManager(new EfAdminDal());
         RoleManager rm = new RoleManager(new EfRoleDal());
         // GET: Authorization
-        //[Authorize(Roles="A")]
+        [Authorize(Roles = "B")]
         public ActionResult Index()
         {
             var adminValues = adm.GetList();
