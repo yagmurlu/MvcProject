@@ -1,4 +1,5 @@
-﻿using EntityLayer.Dto;
+﻿using EntityLayer.Concrete;
+using EntityLayer.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace BussinessLayer.Abstract
         void AdminRegister(string adminName,string adminMail, string password,int roleId);
         bool AdminLogin(AdminLoginDto adminDto);
         bool WriterLogin(WriterLoginDto writerDto);
-        void WriterRegister(string name,string surname,
-           string ımage,string about, string writerMail, string writerPassword,string title,
+        void WriterRegister(string name, string surname,
+           string ımage, string about, string writerMail, string writerPassword, string title,
            bool status);
     }
 }

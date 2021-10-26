@@ -29,11 +29,13 @@
                                 <div class="time-label">
                                     <span class="bg-success">@item.ContentDate.ToShortDateString()</span>
                                 </div>
-                                <!-- /.timeline-label -->
-                                <!-- timeline item -->
+                               
                                 <div>
-                                    <i class="fas fa-comment bg-yellow"></i>
+
+                                    <a class="fas fa-edit bg-yellow" href="/WriterPanelContent/EditContent/@item.ContentID"></a>
+                                    <a class="fas fa-remove-format bg-gradient-red"style="margin-top:45px" href="/WriterPanelContent/DeleteContent/@item.ContentID"></a>
                                     <div class="timeline-item">
+
                                         <h3 class="timeline-header"><a href="#">@item.Heading.HeadingName</a> </h3>
                                         <div class="timeline-body">
                                             @item.ContentValue

@@ -20,7 +20,9 @@ namespace MvcProje.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        IAuthService authService = new AuthManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
+        IAuthService authService = new AuthManager(new AdminManager(new EfAdminDal()),
+            new WriterManager(new EfWriterDal()));
+
         //Context c = new Context();
         //WriterLoginManager wlm = new WriterLoginManager(new EfWriterDal());
         [HttpGet]
@@ -55,14 +57,16 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult WriterLogin(WriterLoginDto writerDto)
         {
-            var response = Request["g-recaptcha-response"];
-            const string secret = "6LfbKk8bAAAAANkMjzLC_iAGX45a_J8RUWe1XYeQ";
-            var client = new WebClient();
-            var reply = client.DownloadString(
-                string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
-            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResult>(reply);
 
-            if (authService.WriterLogin(writerDto) && captchaResponse.Success)
+            //********************Hashleme*******************
+            //var response = Request["g-recaptcha-response"];
+            //const string secret = "6LfbKk8bAAAAANkMjzLC_iAGX45a_J8RUWe1XYeQ";
+            //var client = new WebClient();
+            //var reply = client.DownloadString(
+            //    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+            //var captchaResponse = JsonConvert.DeserializeObject<CaptchaResult>(reply);
+            // && captchaResponse.Success
+            if (authService.WriterLogin(writerDto))
             {
                 //yönlendrime işlemleri
                 FormsAuthentication.SetAuthCookie(writerDto.WriterMail, false);

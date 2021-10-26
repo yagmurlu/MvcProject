@@ -12,9 +12,10 @@ using System.Web.Mvc;
 namespace MvcProje.Controllers
 {
     [Authorize(Roles = "B")]
+    [Authorize(Users = "Admin")]
     public class AuthorizationController : Controller
     {
-        IAuthService authService = new AuthManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
+        IAuthService authService = new AuthManager(new AdminManager(new EfAdminDal()));
         AdminManager adm = new AdminManager(new EfAdminDal());
         RoleManager rm = new RoleManager(new EfRoleDal());
         // GET: Authorization

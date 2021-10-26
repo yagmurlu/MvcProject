@@ -39,12 +39,12 @@ namespace BussinessLayer.Concrete
             return _contentDal.Get(x => x.ContentID == id);
         }
 
-        public List<Content> GetList( string p)
+        public List<Content> GetList()
         {
-            if (!string.IsNullOrEmpty(p))
-            {
-                return _contentDal.List(x => x.ContentValue.Contains(p));
-            }
+            //if (!string.IsNullOrEmpty(p))
+            //{
+            //    return _contentDal.List(x => x.ContentValue.Contains(p));
+            //}
             return _contentDal.List();
         }
         public List<Content> GetListIndex()

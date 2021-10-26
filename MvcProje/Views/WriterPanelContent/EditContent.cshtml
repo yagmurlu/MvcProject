@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.Content
+@{
+    ViewBag.Title = "EditContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<br />
+<style>
+    .ValidationColor {
+        color: red;
+    }
+</style>
+@using (Html.BeginForm("EditContent", "WriterPanelContent", FormMethod.Post))
+{
+
+<div class="form-group">
+    @*<input type="hidden" name="HeadingID" value="@ViewBag.d" />*@
+    @Html.HiddenFor(x => x.ContentID, new { @class = "form-control" })
+    @Html.Label("İçerik Giriniz:")
+    @Html.TextAreaFor(x => x.ContentValue, 10, 30, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ContentValue, "", new { @class = "ValidationColor " })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.ContentDate, new { @class = "form-control" })
+    <br />
+    @Html.HiddenFor(x => x.WriterID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Başlık")
+    @Html.DropDownListFor(x => x.HeadingID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+    <br>
+</div>
+
+}

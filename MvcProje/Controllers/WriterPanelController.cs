@@ -14,6 +14,7 @@ using BussinessLayer.ValidationRules;
 
 namespace MvcProje.Controllers
 {
+    [Authorize]
     public class WriterPanelController : Controller
     {
         // GET: WriterPanel
@@ -38,8 +39,9 @@ namespace MvcProje.Controllers
             ValidationResult results = writervalidator.Validate(p);
             if (results.IsValid)
             {
+                p.WriterStatus = true;
                 wm.WriterUpdate(p);
-                return RedirectToAction("WriterProfile", "WriterPanel");
+                return RedirectToAction("MyHeading", "WriterPanel");
             }
             else
             {

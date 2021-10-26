@@ -86,13 +86,17 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         @foreach (var item in Model)
                         {
-                            <li class="nav-item">
-                                <a href="/Default/Headings/@item.HeadingID" class="nav-link">
-                                    <p>
-                                        @item.HeadingName
-                                    </p>
-                                </a>
-                            </li>
+                            if (item.HeadingStatus == true)
+                            {
+                                <li class="nav-item">
+                                    <a href="/Default/Headings/@item.HeadingID" class="nav-link">
+                                        <p>
+                                            @item.HeadingName
+                                        </p>
+                                    </a>
+                                </li>
+                            }
+
                         }
                     </ul>
                 </nav>

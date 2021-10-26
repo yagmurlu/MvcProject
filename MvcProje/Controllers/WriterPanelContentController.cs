@@ -10,10 +10,12 @@ using System.Web.Mvc;
 
 namespace MvcProje.Controllers
 {
+    [Authorize]
     public class WriterPanelContentController : Controller
     {
         // GET: WriterPanelContent
         ContentManager cm = new ContentManager(new EfContentDal());
+        HeadingManager hm = new HeadingManager(new EfHeadingDal());
         Context c = new Context();
         public ActionResult MyContent(string p)
         {
@@ -39,6 +41,34 @@ namespace MvcProje.Controllers
             p.WriterID = writeridinfo;
             p.ContentStatus = true;
             cm.ContentAdd(p);
+            return RedirectToAction("MyContent");
+        }
+        [HttpGet]
+        public ActionResult EditContent(int id)
+        {
+            List<SelectListItem> headingValue = (from x in hm.GetList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.HeadingName,
+                                                      Value = x.HeadingID.ToString()
+                                                  }).ToList();
+
+            ViewBag.vlc = headingValue;
+
+            var contentValue = cm.GetById(id);
+            return View(contentValue);
+        }
+        [HttpPost]
+        public ActionResult EditContent(Content p)
+        {
+            cm.ContentUpdate(p);
+            return RedirectToAction("MyContent");
+        }
+        public ActionResult DeleteContent(int id)
+        {
+            var contentValue = cm.GetById(id);
+            contentValue.ContentStatus = false;
+            cm.ContentDelete(contentValue);
             return RedirectToAction("MyContent");
         }
     }

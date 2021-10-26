@@ -21,9 +21,8 @@ namespace EntityLayer.Concrete
         public string WriterAbout { get; set; }
         [StringLength(200)]
         public string WriterMail { get; set; }
-
-        public byte[]  WriterPasswordHash { get; set; }
-        public byte[]  WriterPasswordSalt { get; set; }
+        public byte[] WriterPasswordHash { get; set; }
+        public byte[] WriterPasswordSalt { get; set; }
 
         [StringLength(50)]
         public string WriterTıtle { get; set; }

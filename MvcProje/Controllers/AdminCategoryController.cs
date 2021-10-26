@@ -12,7 +12,7 @@ using PagedList;
 
 namespace MvcProje.Controllers
 {
-    [Authorize]
+    [Authorize(Users ="Admin")]
     public class AdminCategoryController : Controller
     {
         CategoryManager cm = new CategoryManager(new EfCategoryDal());

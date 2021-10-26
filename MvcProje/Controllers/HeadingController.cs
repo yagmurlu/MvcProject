@@ -12,6 +12,7 @@ using PagedList.Mvc;
 
 namespace MvcProje.Controllers
 {
+    [Authorize(Users = "Admin")]
     public class HeadingController : Controller
     {
         HeadingManager hm = new HeadingManager(new EfHeadingDal());

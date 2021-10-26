@@ -1,5 +1,6 @@
 ﻿using BussinessLayer.Abstract;
 using BussinessLayer.Utilities.Hashing;
+using DataAccsessLayer.Abstract;
 using EntityLayer.Concrete;
 using EntityLayer.Dto;
 using System;
@@ -15,10 +16,22 @@ namespace BussinessLayer.Concrete
     {
         IAdminService _adminService;
         IWriterService _writerService;
+     
 
-        public AuthManager(IAdminService adminService, IWriterService writerService)
+        public AuthManager(IAdminService adminService,IWriterService writerService)
         {
             _adminService = adminService;
+            _writerService = writerService;
+          
+        }
+
+        public AuthManager(IAdminService adminService)
+        {
+            _adminService = adminService;
+        }
+
+        public AuthManager(IWriterService writerService)
+        {
             _writerService = writerService;
         }
 
@@ -56,13 +69,14 @@ namespace BussinessLayer.Concrete
 
         public bool WriterLogin(WriterLoginDto writerDto)
         {
+
             using (var crypto = new System.Security.Cryptography.HMACSHA512())
             {
 
                 var writer = _writerService.GetList();
                 foreach (var item in writer)
                 {
-                    if (HashingHelper.WriterVerifyPasswordHash(writerDto.WriterPassword,item.WriterPasswordHash,item.WriterPasswordSalt))
+                    if (HashingHelper.WriterVerifyPasswordHash(writerDto.WriterPassword, item.WriterPasswordHash, item.WriterPasswordSalt))
                     {
                         return true;
                     }
@@ -75,8 +89,8 @@ namespace BussinessLayer.Concrete
            string ımage, string about, string writerMail, string writerPassword, string title,
            bool status)
         {
-            byte[]  passwordHash, passwordSalt;
-          
+            byte[] passwordHash, passwordSalt;
+
             HashingHelper.WriterCreatePasswordHash(writerPassword, out passwordHash, out passwordSalt);
             var writer = new Writer
             {
@@ -88,9 +102,10 @@ namespace BussinessLayer.Concrete
                 WriterPasswordHash = passwordHash,
                 WriterPasswordSalt = passwordSalt,
                 WriterTıtle = title,
-                WriterStatus=status
+                WriterStatus = status
             };
             _writerService.WriterAdd(writer);
         }
+
     }
 }

@@ -2802,7 +2802,6 @@
     <Content Include="Views\WriterPanelMessage\GetSendBoxMessageDetails.cshtml" />
     <Content Include="Views\WriterPanelMessage\NewMessage.cshtml" />
     <Content Include="Views\WriterPanelContent\MyContent.cshtml" />
-    <Content Include="Views\Login\WriterLogin.cshtml" />
     <Content Include="Views\Default\Headings.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\WriterPanel\AllHeading.cshtml" />
@@ -2830,6 +2829,8 @@
     <Content Include="Views\Heading\HeadingByWriter.cshtml" />
     <Content Include="Views\Heading\HeadingByCategory.cshtml" />
     <Content Include="Views\About\EditAbout.cshtml" />
+    <Content Include="Views\Login\WriterLogin.cshtml" />
+    <Content Include="Views\WriterPanelContent\EditContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

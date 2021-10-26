@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MvcProje.Controllers
 {
+    [Authorize(Users = "Admin")]
     public class ContentController : Controller
     {
         ContentManager cm = new ContentManager(new EfContentDal());
@@ -19,10 +20,10 @@ namespace MvcProje.Controllers
         {
             return View();
         }
-        public ActionResult GettAllContent(string p)
+        public ActionResult GettAllContent()
         {
 
-            var values = cm.GetList(p);
+            var values = cm.GetList();
             return View(values.ToList());
         }
         public ActionResult ContentByHeading(int id)

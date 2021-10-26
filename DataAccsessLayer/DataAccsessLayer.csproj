@@ -149,6 +149,14 @@
     <Compile Include="Migrations\202109301609487__contact_tbl_edit.designer.cs">
       <DependentUpon>202109301609487__contact_tbl_edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110251838069_Writer_Password_Edit.cs" />
+    <Compile Include="Migrations\202110251838069_Writer_Password_Edit.designer.cs">
+      <DependentUpon>202110251838069_Writer_Password_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110261637458_WriterHashCreated.cs" />
+    <Compile Include="Migrations\202110261637458_WriterHashCreated.designer.cs">
+      <DependentUpon>202110261637458_WriterHashCreated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -216,6 +224,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109301609487__contact_tbl_edit.resx">
       <DependentUpon>202109301609487__contact_tbl_edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110251838069_Writer_Password_Edit.resx">
+      <DependentUpon>202110251838069_Writer_Password_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110261637458_WriterHashCreated.resx">
+      <DependentUpon>202110261637458_WriterHashCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

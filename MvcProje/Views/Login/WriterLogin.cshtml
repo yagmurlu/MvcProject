@@ -1,7 +1,8 @@
-﻿@model EntityLayer.Dto.WriterLoginDto
+﻿
 @{
     Layout = null;
 }
+
 
 <!doctype html>
 <html lang="en">
@@ -29,7 +30,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
                         <h3 class="mb-4 text-center">Hesabın Var Mı?</h3>
-                        @using (Html.BeginForm("WriterLogin", "Login", FormMethod.Post))
+                        @using(Html.BeginForm("WriterLogin", "Login", FormMethod.Post))
                         {
                             <div class="form-group">
                                 <input type="text" name="WriterMail" class="form-control" placeholder="Mail" required>
@@ -61,7 +62,7 @@
 
                         </div>
                         <a href="/Home/HomePage/" style="margin-left:80px">&mdash; ANA SAYFAYA DÖN &mdash;</a>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
