@@ -116,7 +116,7 @@ namespace MvcProje.Controllers
         //p parametresi sayfalama işleminin kaçtan başlayacağını belirler.
         public ActionResult AllHeading(int p=1)
         {
-            var headingList = hm.GetList().ToPagedList(p,6);
+            var headingList = hm.GetList().ToPagedList(p,9);
             return View(headingList);
         }
     }

@@ -1,15 +1,11 @@
 ﻿@*@using EntityLayer.Concrete
-@model List<About>*@
+@model List<ImageFile>*@
 @{
     Layout = null;
 }
-
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+@*@{
+    Random randomScreen = new Random();
+}*@
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -63,7 +59,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div id="word-mark">
                     <h1>
-                        <a href="index.html">MVC_Kampı</a>
+                        <a href="/Home/HomePage/">MVC_Kampı</a>
                     </h1>
                 </div>
             </div>
@@ -80,10 +76,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <a class="scroll" href="#home">Ana Sayfa</a>
                     </li>
                     <li>
-                        <a class="scroll" href="#about">Geliştirme Araçları</a>
+                        <a class="scroll" href="#about">Teknik Detaylar</a>
                     </li>
                     <li>
-                        <a class="scroll" href="#services">Hakkında</a>
+                        <a class="scroll" href="#services">Proje Hakkında</a>
                     </li>
                     <li>
                         <a class="scroll" href="#projects">Görseller</a>
@@ -103,7 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </li>
                     <li>
                         <button type="button" class="btn login-btn text-uppercase">
-                          
+
                             <a href="/Register/WriterRegister/">
                                 Kayıt Ol
                             </a>
@@ -151,7 +147,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="progress-one my-lg-5" data-aos="fade-up">
                                 <h4 class="progress-tittle-w3">C# Programlama Dili</h4>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="progress-one" data-aos="fade-up">
@@ -299,52 +295,111 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </section>
-    <!-- //services -->
-    <!-- /experience -->
-    <section class="experience py-lg-5 py-4" id="experience">
-        <div class="timeline py-lg-5 py-3">
-            <h4 class="sub-tittle-w3 text-uppercase text-center">Experience</h4>
-            <h3 class="tittle-w3 text-uppercase mb-lg-5 mb-3 text-center">Job & Education</h3>
-            <div id="my-timeline"></div>
-        </div>
 
-    </section>
-    <!-- //experience -->
-    <!--gallery  -->
     <section class="gallery py-md-5 py-3" id="projects">
         <div class="gallery-inner container py-md-5 pb-3">
             <h3 class="tittle-w3 text-uppercase mb-lg-5 mb-3 text-center">Proje Görselleri</h3>
             <div class="row">
 
                 <div class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
+                    @*@for (int i = 0; i < 3; i++)
+                    {
+                        int id = randomScreen.Next(0, Model.Count - 1);
+                        <div class="section_1_gallery_grid">
+                            <a title="@Model[id].ImageName" href="@Model[id].ImagePath"></a>
+                            <div class="section_1_gallery_grid1">
+                                <img src="@Model[id].ImagePath " alt="" class="img-fluid"/>
+                                <div class="proj_gallery_grid1_pos">
+                                    <h3>@Model[id].ImageName</h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    }*@
+
+
                     <div class="section_1_gallery_grid">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g1.jpg">
+                        <a title="Yazarların Yeni Başlık Oluşturacağı Ekran"href="~/AdminLTE-3.0.4/ProjeScreenShot/AddHeadingWriter.png">
+                                <div class="section_1_gallery_grid1">
+                                    <img src="~/AdminLTE-3.0.4/ProjeScreenShot/AddHeadingWriter.png" alt="Başlık Ekleme" class="img-fluid" />
+                                    <div class="proj_gallery_grid1_pos">
+                                        <h3>Başlık Oluşturma</h3>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="section_1_gallery_grid" data-aos="zoom-in">
+                            <a title="Yazarların yazdığı tüm yazıları gösteren admin panelidir." href="~/AdminLTE-3.0.4/ProjeScreenShot/AdminContent.png">
+                                <div class="section_1_gallery_grid1">
+
+                                    <img src="~/AdminLTE-3.0.4/ProjeScreenShot/AdminContent.png"  alt=" " class="img-fluid" />
+                                    <div class="proj_gallery_grid1_pos">
+                                        <h3>Tüm Yazılar</h3>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="section_1_gallery_grid" data-aos="zoom-in">
+                            <a title="Admin bu sayfa da tüm yazarları görebilir ve onlar ile ilgili işlemler yapabilir." href="~/AdminLTE-3.0.4/ProjeScreenShot/AdminInWriters.png">
+                                <div class="section_1_gallery_grid1">
+
+                                    <img src="~/AdminLTE-3.0.4/ProjeScreenShot/AdminInWriters.png" alt=" " class="img-fluid" />
+                                    <div class="proj_gallery_grid1_pos">
+                                        <h3>Admin Yazar Paneli</h3>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+                <div class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
+                    @*@for (int i = 0; i < 3; i++)
+        {
+            int id = randomScreen.Next(0, Model.Count - 1);
+            <div class="section_1_gallery_grid">
+                <a title="@Model[id].ImageName" href="@Model[id].ImagePath"></a>
+                <div class="section_1_gallery_grid1">
+                    <img src="@Model[id].ImagePath " alt="" class="img-fluid" />
+                    <div class="proj_gallery_grid1_pos">
+                        <h3>@Model[id].ImageName</h3>
+
+                    </div>
+                </div>
+            </div>
+        }*@
+                    <div class="section_1_gallery_grid">
+                        <a title="Bana ait yetenekelerin sergilendiği alandır." href="~/AdminLTE-3.0.4/ProjeScreenShot/AdminSkill.png">
                             <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g1.jpg" alt=" " class="img-fluid" />
+
+                                <img src="~/AdminLTE-3.0.4/ProjeScreenShot/AdminSkill.png"alt="Yetenek Kartı" class="img-fluid"  />
                                 <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
+                                    <h3>Yetenek Kartı</h3>
 
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="section_1_gallery_grid" data-aos="zoom-in">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g2.jpg">
+                        <a title="Yazar paneline ait olan bu bölüm giriş yapan yazara ait başlıkları gösterir." href="~/AdminLTE-3.0.4/ProjeScreenShot/HeadingWriter.png">
                             <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g2.jpg" alt=" " class="img-fluid" />
+
+                                <img src="~/AdminLTE-3.0.4/ProjeScreenShot/HeadingWriter.png" alt="Yazar Başlıkları" class="img-fluid" />
                                 <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
+                                    <h3>Yazarın Başlıkları</h3>
 
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="section_1_gallery_grid" data-aos="zoom-in">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g3.jpg">
+                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/ProjeScreenShot/MessageWriter.png">
                             <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g3.jpg" alt=" " class="img-fluid" />
+
+                                <img src="~/AdminLTE-3.0.4/ProjeScreenShot/MessageWriter.png"alt=" Yazar Mesaj Kutusu" class="img-fluid" />
                                 <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
+                                    <h3>Yazar Mesaj Kutusu</h3>
 
                                 </div>
                             </div>
@@ -352,67 +407,50 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                 </div>
                 <div class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
-                    <div class="section_1_gallery_grid">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g4.jpg">
-                            <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g4.jpg" alt=" " class="img-fluid" />
-                                <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="section_1_gallery_grid" data-aos="zoom-in">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g5.jpg">
-                            <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g5.jpg" alt=" " class="img-fluid" />
-                                <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
+                    @*@for (int i = 0; i < 3; i++)
+        {
+            int id = randomScreen.Next(0, Model.Count - 1);
+            <div class="section_1_gallery_grid">
+                <a title="@Model[id].ImageName" href="@Model[id].ImagePath"></a>
+                <div class="section_1_gallery_grid1">
+                    <img src="@Model[id].ImagePath " alt="" class="img-fluid" />
+                    <div class="proj_gallery_grid1_pos">
+                        <h3>@Model[id].ImageName</h3>
 
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="section_1_gallery_grid" data-aos="zoom-in">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g6.jpg">
-                            <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g6.jpg" alt=" " class="img-fluid" />
-                                <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
-
-                                </div>
-                            </div>
-                        </a>
                     </div>
                 </div>
-                <div class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
+            </div>
+        }*@
                     <div class="section_1_gallery_grid">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g7.jpg">
+                        <a title="Yazar kendine ait profil bilgilerini düzenleyebilir." href="~/AdminLTE-3.0.4/ProjeScreenShot/ProfileEdit.png">
                             <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g7.jpg" alt=" " class="img-fluid" />
+
+                                <img src="~/AdminLTE-3.0.4/ProjeScreenShot/ProfileEdit.png" alt=" Yazar Profil Düzenleme" class="img-fluid" />
                                 <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
+                                    <h3>Yazarın Profilini Düzenleme</h3>
 
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="section_1_gallery_grid" data-aos="zoom-in">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g8.jpg">
+                        <a title="Admin Panelinde yer alan raporlar içerikle ilgili döküman bilgiler elde etmemizi sağlar" href="~/AdminLTE-3.0.4/ProjeScreenShot/Rapor.png">
                             <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g8.jpg" alt=" " class="img-fluid" />
+                                <img src="~/AdminLTE-3.0.4/ProjeScreenShot/Rapor.png"alt=" Rapor" class="img-fluid"  />
                                 <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
+                                    <h3>Rapor</h3>
+
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="section_1_gallery_grid" data-aos="zoom-in">
-                        <a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="~/AdminLTE-3.0.4/web/images/g9.jpg">
+                        <a title="Yazar oluşturduğu yazıları sileblir veya düzenleyebilir." href="~/AdminLTE-3.0.4/ProjeScreenShot/WriterContent.png">
                             <div class="section_1_gallery_grid1">
-                                <img src="~/AdminLTE-3.0.4/web/images/g9.jpg" alt=" " class="img-fluid" />
+
+                                <img src="~/AdminLTE-3.0.4/ProjeScreenShot/WriterContent.png" />
                                 <div class="proj_gallery_grid1_pos">
-                                    <h3>Recognize</h3>
+                                    <h3>Yazarların Oluşturduğu İçerikler</h3>
 
                                 </div>
                             </div>
@@ -461,478 +499,390 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </section>
-    <!--//stats-->
-    <!-- /testimonials -->
-        <div class="testimonials py-lg-5 py-4" id="clients">
 
-            <div class="testimonials-inner container py-lg-4 py-3">
+    <section class="contact py-lg-5 py-md-5 py-3" id="contact">
+        <div class="container">
+            <div class="inner-sec-w3ls py-lg-5 py-3">
+                <h3 class="tittle-w3 text-uppercase mb-lg-5 mb-3 text-center text-white">İletişime Geçin</h3>
 
+                <div class="contact_grid_right">
+                    <form action="#" method="post">
+                        <div class="row contact_left_grid">
+                            <div class="col-md-6 con-left" data-aos="fade-up">
+                                <div class="form-group">
 
-                <h3 class="tittle-w3 text-uppercase mb-lg-5 mb-3 text-center">Projeye Dair</h3>
+                                    <input class="form-control" type="text" name="Name" placeholder="Adınız" required="">
+                                </div>
+                                <div class="form-group">
 
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <input class="form-control" type="email" name="Email" placeholder="Mail" required="">
+                                </div>
+                                <div class="form-group">
 
-
-                    <div class="carousel-inner" role="listbox">
-
-                        <div class="carousel-item active">
-                          
-                                <div class="testimonials_grid center">
-                                    <div class="testimonials_grid-inn text-uppercase">
-                                        <i class="fas fa-quote-left"></i>
-                                        <p>
-                                          
-                                        </p>
-                                    </div>
+                                    <input class="form-control" type="text" name="Subject" placeholder="Konu" required="">
                                 </div>
                             </div>
+                            <div class="col-md-6 con-right" data-aos="fade-up">
+                                <div class="form-group">
+                                    <textarea id="textarea" placeholder="Mesajınız" required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="sub-honey mx-auto mt-3">
+                                <input class="form-control" type="submit" value="Gönder">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="address row mt-lg-5">
+
+                    <div class="col-md-4 address-grid" data-aos="flip-up">
+                        <div class="address-info">
+                            <div class="address-left text-center">
+                                <i class="far fa-map"></i>
+                            </div>
+                            <div class="address-right text-center">
+                                <h6 class="my-3">Adres</h6>
+                                <p>
+                                    Ankara,Türkiye
+
+                                </p>
+                            </div>
+                        </div>
 
                     </div>
-
-                </div>
-
-            </div>
-            
-        </div>
-        <!-- //testimonials -->
-        <!-- /Contact-->
-        <section class="contact py-lg-5 py-md-5 py-3" id="contact">
-            <div class="container">
-                <div class="inner-sec-w3ls py-lg-5 py-3">
-                    <h4 class="sub-tittle-w3 text-uppercase text-center">Find Me</h4>
-                    <h3 class="tittle-w3 text-uppercase mb-lg-5 mb-3 text-center text-white">İletişime Geçin</h3>
-
-                    <div class="contact_grid_right">
-                        <form action="#" method="post">
-                            <div class="row contact_left_grid">
-                                <div class="col-md-6 con-left" data-aos="fade-up">
-                                    <div class="form-group">
-
-                                        <input class="form-control" type="text" name="Name" placeholder="Adınız" required="">
-                                    </div>
-                                    <div class="form-group">
-
-                                        <input class="form-control" type="email" name="Email" placeholder="Mail" required="">
-                                    </div>
-                                    <div class="form-group">
-
-                                        <input class="form-control" type="text" name="Subject" placeholder="Konu" required="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 con-right" data-aos="fade-up">
-                                    <div class="form-group">
-                                        <textarea id="textarea" placeholder="Mesajınız" required=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="sub-honey mx-auto mt-3">
-                                    <input class="form-control" type="submit" value="Gönder">
-                                </div>
+                    <div class="col-md-4 address-grid" data-aos="flip-up">
+                        <div class="address-info">
+                            <div class="address-left text-center">
+                                <i class="far fa-envelope"></i>
                             </div>
+                            <div class="address-right text-center">
+                                <h6 class="my-3">Email</h6>
+                                <p>
+                                    Email :
+                                    <a href="mailto:example@email.com"> mail@example.com</a>
+
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 address-grid" data-aos="flip-up">
+                        <div class="address-info">
+                            <div class="address-left text-center">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="address-right text-center">
+                                <h6 class="my-3">Telefon</h6>
+                                <p> +90 555 55 55</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //Contact -->
+    <!--/footer-->
+    <footer class="footer text-left">
+        <div class="container py-4 py-sm-5">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6119.460363377674!2d32.83256653488768!3d39.925053999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f190a9cea8f%3A0xd3862ea8248d08a0!2sAn%C4%B1tkabir!5e0!3m2!1str!2str!4v1631011899601!5m2!1str!2str" width="1200" height="450" style="border:0;margin-right:30px" allowfullscreen="" loading="lazy"></iframe>
+            <hr>
+            <div class="d-flex justify-content-between pt-lg-3  footer-bottom-cpy">
+                <div class="copy-right-w3ls">
+                    <p>
+                        © 2021 MVC Proje Kampı. Tüm Hakları Saklıdır. | Design by
+                        <a href="http://w3layouts.com/"> W3layouts </a>
+
+                    </p>
+                </div>
+                <div class="social-content pb-md-0 pb-4">
+                    <ul class="social-icons text-center d-flex">
+                        <li class="ml-lg-5">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!--//footer-->
+    <!--model-forms-->
+    <!--/Login-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="login px-4 mx-auto mw-100">
+                        <h5 class="text-center mb-4">Login Now</h5>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label class="mb-2">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-2">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+                            </div>
+                            <div class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
+                            <p class="text-center pb-4">
+                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter2"> Don't have an account?</a>
+                            </p>
                         </form>
                     </div>
-                    <div class="address row mt-lg-5">
-
-                        <div class="col-md-4 address-grid" data-aos="flip-up">
-                            <div class="address-info">
-                                <div class="address-left text-center">
-                                    <i class="far fa-map"></i>
-                                </div>
-                                <div class="address-right text-center">
-                                    <h6 class="my-3">Adres</h6>
-                                    <p>
-                                        Ankara,Türkiye
-
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4 address-grid" data-aos="flip-up">
-                            <div class="address-info">
-                                <div class="address-left text-center">
-                                    <i class="far fa-envelope"></i>
-                                </div>
-                                <div class="address-right text-center">
-                                    <h6 class="my-3">Email</h6>
-                                    <p>
-                                        Email :
-                                        <a href="mailto:example@email.com"> mail@example.com</a>
-
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4 address-grid" data-aos="flip-up">
-                            <div class="address-info">
-                                <div class="address-left text-center">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
-                                <div class="address-right text-center">
-                                    <h6 class="my-3">Telefon</h6>
-                                    <p> +90 555 55 55</p>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- //Contact -->
-        <!--/footer-->
-        <footer class="footer text-left">
-            <div class="container py-4 py-sm-5">
 
-                <div class="row py-sm-4 py-3">
-                    <div class="col-lg-2 col-md-4">
-                        <ul class="list-footer" data-aos="fade-up">
-                            <li>
-                                <a href="#home" class="nav-link scroll">
-                                    Ana Sayfa
-                                </a>
-                            </li>
-                            <li class="my-2">
-                                <a href="#about" class="nav-link scroll">
-                                    Geliştirme Araçları
-                                </a>
-                            </li>
-                            <li class="my-2">
-                                <a href="#services" class="nav-link scroll">
-                                    Hakkında
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="#projects" class="nav-link scroll">
-                                    Görseller
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#contact" class="nav-link scroll">
-                                    İletişim
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-6 mt-sm-5">
-                        <ul class="list-footer" data-aos="fade-up">
-                            <li>
-                                <a href="#register" data-toggle="modal" data-target="#exampleModalCenter" class="nav-link scroll">
-                                    Giriş Yap
-                                </a>
-                            </li>
-                            <li class="my-2">
-                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter2" class="nav-link">
-                                    Kayıt Ol
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="offset-lg-4"></div>
-                    <div class="col-lg-4 footer-end-grid mt-md-0 mt-sm-5" data-aos="fade-up">
-                        <h2>
-                            <a href="index.html">
-                                <i class="fas fa-crosshairs"></i> MVC_KAMPI
-                            </a>
-                        </h2>
-                    </div>
-                </div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6119.460363377674!2d32.83256653488768!3d39.925053999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f190a9cea8f%3A0xd3862ea8248d08a0!2sAn%C4%B1tkabir!5e0!3m2!1str!2str!4v1631011899601!5m2!1str!2str" width="1200" height="450" style="border:0;margin-right:30px" allowfullscreen="" loading="lazy"></iframe>
-                <hr>
-                <div class="d-flex justify-content-between pt-lg-3  footer-bottom-cpy">
-                    <div class="copy-right-w3ls">
-                        <p>
-                            © 2021 MVC Proje Kampı. Tüm Hakları Saklıdır. | Design by
-                            <a href="http://w3layouts.com/"> W3layouts </a>
-
-                        </p>
-                    </div>
-                    <div class="social-content pb-md-0 pb-4">
-                        <ul class="social-icons text-center d-flex">
-                            <li class="ml-lg-5">
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fab fa-google-plus-g"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </footer>
-        <!--//footer-->
-        <!--model-forms-->
-        <!--/Login-->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="login px-4 mx-auto mw-100">
-                            <h5 class="text-center mb-4">Login Now</h5>
-                            <form action="#" method="post">
-                                <div class="form-group">
-                                    <label class="mb-2">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                </div>
-                                <div class="form-group">
-                                    <label class="mb-2">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
-                                <p class="text-center pb-4">
-                                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter2"> Don't have an account?</a>
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
-        <!--//Login-->
-        <!--/Register-->
-        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="login px-4 mx-auto mw-100">
-                            <h5 class="text-center mb-4">Register Now</h5>
-                            <form action="#" method="post">
-                                <div class="form-group">
-                                    <label>First name</label>
-
-                                    <input type="text" class="form-control" id="validationDefault01" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label>Last name</label>
-                                    <input type="text" class="form-control" id="validationDefault02" placeholder="" required="">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="mb-2">Password</label>
-                                    <input type="password" class="form-control" id="password1" placeholder="" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label>Confirm Password</label>
-                                    <input type="password" class="form-control" id="password2" placeholder="" required="">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary submit mb-4">Register</button>
-                                <p class="text-center pb-4">
-                                    <a href="#">By clicking Register, I agree to your terms</a>
-                                </p>
-                            </form>
-
-                        </div>
-                    </div>
-
+    </div>
+    <!--//Login-->
+    <!--/Register-->
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
+                    <div class="login px-4 mx-auto mw-100">
+                        <h5 class="text-center mb-4">Register Now</h5>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label>First name</label>
+
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Last name</label>
+                                <input type="text" class="form-control" id="validationDefault02" placeholder="" required="">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="mb-2">Password</label>
+                                <input type="password" class="form-control" id="password1" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" id="password2" placeholder="" required="">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary submit mb-4">Register</button>
+                            <p class="text-center pb-4">
+                                <a href="#">By clicking Register, I agree to your terms</a>
+                            </p>
+                        </form>
+
+                    </div>
+                </div>
+
             </div>
         </div>
-        <!--//Register-->
+    </div>
+    <!--//Register-->
 
-        <script src="~/AdminLTE-3.0.4/web/js/jquery-2.2.3.min.js"></script>
-        <!-- banner-type-text -->
-        <script src='~/AdminLTE-3.0.4/web/js/aos.js'></script>
-        <script>
-            AOS.init({
-                easing: 'ease-out-back',
-                duration: 1000
+    <script src="~/AdminLTE-3.0.4/web/js/jquery-2.2.3.min.js"></script>
+    <!-- banner-type-text -->
+    <script src='~/AdminLTE-3.0.4/web/js/aos.js'></script>
+    <script>
+        AOS.init({
+            easing: 'ease-out-back',
+            duration: 1000
+        });
+
+    </script>
+    <!-- sticky nav bar-->
+    <script>
+        $(() => {
+
+            //On Scroll Functionality
+            $(window).scroll(() => {
+                var windowTop = $(window).scrollTop();
+                windowTop > 100 ? $('nav').addClass('navShadow') : $('nav').removeClass('navShadow');
+                windowTop > 100 ? $('ul.nav-honey').css('top', '50px') : $('ul.nav-honey').css('top', '160px');
             });
 
-        </script>
-        <!-- sticky nav bar-->
-        <script>
-            $(() => {
-
-                //On Scroll Functionality
-                $(window).scroll(() => {
-                    var windowTop = $(window).scrollTop();
-                    windowTop > 100 ? $('nav').addClass('navShadow') : $('nav').removeClass('navShadow');
-                    windowTop > 100 ? $('ul.nav-honey').css('top', '50px') : $('ul.nav-honey').css('top', '160px');
-                });
-
-                //Click Logo To Scroll To Top
-                $('#logo').on('click', () => {
-                    $('html,body').animate({
-                        scrollTop: 0
-                    }, 500);
-                });
-
-                //            //Smooth Scrolling Using Navigation Menu
-                //            $('a[href*="#"]').on('click', function(e) {
-                //                $('html,body').animate({
-                //                    scrollTop: $($(this).attr('href')).offset().top - 100
-                //                }, 500);
-                //                e.preventDefault();
-                //            });
-
-                //Toggle Menu
-                $('#menu-toggle').on('click', () => {
-                    $('#menu-toggle').toggleClass('closeMenu');
-                    $('ul').toggleClass('showMenu');
-
-                    $('li').on('click', () => {
-                        $('ul').removeClass('showMenu');
-                        $('#menu-toggle').removeClass('closeMenu');
-                    });
-                });
-
+            //Click Logo To Scroll To Top
+            $('#logo').on('click', () => {
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 500);
             });
 
-        </script>
-        <!-- //sticky nav bar -->
-        <!-- Include jQuery Timeline Plugin -->
-        <script src="~/AdminLTE-3.0.4/web/js/jquery.roadmap.js"></script>
+            //            //Smooth Scrolling Using Navigation Menu
+            //            $('a[href*="#"]').on('click', function(e) {
+            //                $('html,body').animate({
+            //                    scrollTop: $($(this).attr('href')).offset().top - 100
+            //                }, 500);
+            //                e.preventDefault();
+            //            });
 
-        <script>
-            $(document).ready(function () {
+            //Toggle Menu
+            $('#menu-toggle').on('click', () => {
+                $('#menu-toggle').toggleClass('closeMenu');
+                $('ul').toggleClass('showMenu');
 
-                var events = [{
-                    date: 'Oct 2018 - Present',
-                    content: 'Company Name <small>Co-founder, Front-end Designer</small>'
-                },
-                {
-                    date: '2016 - 2018',
-                    content: 'Company Name <small>Senior Visual Designer</small>'
-                },
-                {
-                    date: '2013 - 2016',
-                    content: 'Company Name <small>Mid-level Designer</small>'
-                },
-                {
-                    date: '2012 - 2013',
-                    content: 'Company Name <small>Mid-level Designer</small>'
-                },
-                {
-                    date: '2012 - 2013',
-                    content: 'Company Name <small>Freelance</small>'
-                },
-                {
-                    date: '2011 - 2012',
-                    content: 'San Diego university  <small>For Design</small>'
-                },
-                {
-                    date: '2010 - 2011',
-                    content: 'New York university  <small>For Graphic Design</small>'
-                },
-
-                {
-                    date: '2009 - 2010',
-                    content: 'New York university  <small>For Graphic Design</small>'
-                },
-
-                {
-                    date: '2008 - 2009',
-                    content: 'New York university  <small>For Graphic Design</small>'
-                },
-                {
-                    date: '2005 - 2008',
-                    content: 'Lorem Ipsum  <small>Add Description</small>'
-                },
-                {
-                    date: '2003 - 2005',
-                    content: 'Lorem IPsum  <small>Add Description</small>'
-                },
-                {
-                    date: '2001 - 2003',
-                    content: 'Lorem IPsum  <small>Add Description</small>'
-                }
-                ];
-
-                $('#my-timeline').roadmap(events, {
-                    eventsPerSlide: 6,
-                    slide: 1,
-                    prevArrow: '<i class="fas fa-chevron-left"></i>',
-                    nextArrow: '<i class="fas fa-chevron-right"></i>'
+                $('li').on('click', () => {
+                    $('ul').removeClass('showMenu');
+                    $('#menu-toggle').removeClass('closeMenu');
                 });
             });
 
-        </script>
-        <!-- simpleLightbox -->
-        <script src="~/AdminLTE-3.0.4/web/js/simpleLightbox.js"></script>
-        <script>
-            $('.proj_gallery_grid a').simpleLightbox();
+        });
 
-        </script>
-        <!-- //simpleLightbox -->
-        <!-- stats -->
-        <script src="~/AdminLTE-3.0.4/web/js/jquery.waypoints.min.js"></script>
-        <script src="~/AdminLTE-3.0.4/web/js/jquery.countup.js"></script>
-        <script>
-            $('.counter').countUp();
+    </script>
+    <!-- //sticky nav bar -->
+    <!-- Include jQuery Timeline Plugin -->
+    <script src="~/AdminLTE-3.0.4/web/js/jquery.roadmap.js"></script>
 
-        </script>
-        <!-- //stats -->
-        <!--/ start-smoth-scrolling -->
-        <script src="~/AdminLTE-3.0.4/web/js/move-top.js"></script>
-        <script src="~/AdminLTE-3.0.4/web/js/easing.js"></script>
-        <script>
-            jQuery(document).ready(function ($) {
-                $(".scroll").click(function (event) {
-                    event.preventDefault();
-                    $('html,body').animate({
-                        scrollTop: $(this.hash).offset().top
-                    }, 900);
-                });
+    <script>
+        $(document).ready(function () {
+
+            var events = [{
+                date: 'Oct 2018 - Present',
+                content: 'Company Name <small>Co-founder, Front-end Designer</small>'
+            },
+            {
+                date: '2016 - 2018',
+                content: 'Company Name <small>Senior Visual Designer</small>'
+            },
+            {
+                date: '2013 - 2016',
+                content: 'Company Name <small>Mid-level Designer</small>'
+            },
+            {
+                date: '2012 - 2013',
+                content: 'Company Name <small>Mid-level Designer</small>'
+            },
+            {
+                date: '2012 - 2013',
+                content: 'Company Name <small>Freelance</small>'
+            },
+            {
+                date: '2011 - 2012',
+                content: 'San Diego university  <small>For Design</small>'
+            },
+            {
+                date: '2010 - 2011',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
+
+            {
+                date: '2009 - 2010',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
+
+            {
+                date: '2008 - 2009',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
+            {
+                date: '2005 - 2008',
+                content: 'Lorem Ipsum  <small>Add Description</small>'
+            },
+            {
+                date: '2003 - 2005',
+                content: 'Lorem IPsum  <small>Add Description</small>'
+            },
+            {
+                date: '2001 - 2003',
+                content: 'Lorem IPsum  <small>Add Description</small>'
+            }
+            ];
+
+            $('#my-timeline').roadmap(events, {
+                eventsPerSlide: 6,
+                slide: 1,
+                prevArrow: '<i class="fas fa-chevron-left"></i>',
+                nextArrow: '<i class="fas fa-chevron-right"></i>'
+            });
+        });
+
+    </script>
+    <!-- simpleLightbox -->
+    <script src="~/AdminLTE-3.0.4/web/js/simpleLightbox.js"></script>
+    <script>
+        $('.proj_gallery_grid a').simpleLightbox();
+
+    </script>
+    <!-- //simpleLightbox -->
+    <!-- stats -->
+    <script src="~/AdminLTE-3.0.4/web/js/jquery.waypoints.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/web/js/jquery.countup.js"></script>
+    <script>
+        $('.counter').countUp();
+
+    </script>
+    <!-- //stats -->
+    <!--/ start-smoth-scrolling -->
+    <script src="~/AdminLTE-3.0.4/web/js/move-top.js"></script>
+    <script src="~/AdminLTE-3.0.4/web/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            /*
+                                    var defaults = {
+                                          containerID: 'toTop', // fading element id
+                                        containerHoverID: 'toTopHover', // fading element hover id
+                                        scrollSpeed: 1200,
+                                        easingType: 'linear'
+                                     };
+                                    */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
             });
 
-        </script>
-        <script>
-            $(document).ready(function () {
-                /*
-                                        var defaults = {
-                                              containerID: 'toTop', // fading element id
-                                            containerHoverID: 'toTopHover', // fading element hover id
-                                            scrollSpeed: 1200,
-                                            easingType: 'linear'
-                                         };
-                                        */
+        });
 
-                $().UItoTop({
-                    easingType: 'easeOutQuart'
-                });
+    </script>
+    <!--// end-smoth-scrolling -->
+    <!-- //js -->
 
-            });
+    <script src="~/AdminLTE-3.0.4/web/js/bootstrap.js"></script>
 
-        </script>
-        <!--// end-smoth-scrolling -->
-        <!-- //js -->
-
-        <script src="~/AdminLTE-3.0.4/web/js/bootstrap.js"></script>
-
-    </body>
+</body>
 
 </html>

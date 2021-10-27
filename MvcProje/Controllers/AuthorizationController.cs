@@ -11,22 +11,24 @@ using System.Web.Mvc;
 
 namespace MvcProje.Controllers
 {
-    [Authorize(Roles = "B")]
-    [Authorize(Users = "Admin")]
+    [Authorize(Roles = "A")]
     public class AuthorizationController : Controller
     {
         IAuthService authService = new AuthManager(new AdminManager(new EfAdminDal()));
         AdminManager adm = new AdminManager(new EfAdminDal());
         RoleManager rm = new RoleManager(new EfRoleDal());
         // GET: Authorization
-        [Authorize(Roles = "B")]
+        [Authorize(Roles = "A")]
         public ActionResult Index()
         {
+
             var adminValues = adm.GetList();
             return View(adminValues);
+
         }
+        [Authorize(Roles = "A")]
         [HttpGet]
-  
+
         public ActionResult AddAdmin()
         {
             List<SelectListItem> adminRole = (from x in rm.GetAllList()
@@ -38,10 +40,11 @@ namespace MvcProje.Controllers
             ViewBag.vlc = adminRole;
             return View();
         }
+        [Authorize(Roles = "A")]
         [HttpPost]
         public ActionResult AddAdmin(AdminLoginDto loginDto)
         {
-            authService.AdminRegister(loginDto.AdminName,loginDto.AdminUsername, loginDto.AdminPassword,loginDto.AdminRoleId);
+            authService.AdminRegister(loginDto.AdminName, loginDto.AdminUsername, loginDto.AdminPassword, loginDto.AdminRoleId);
             return RedirectToAction("AddAdmin");
         }
         [HttpGet]

@@ -12,7 +12,7 @@ using PagedList;
 
 namespace MvcProje.Controllers
 {
-    [Authorize(Users = "Admin")]
+    [Authorize]
     public class MessageController : Controller
     {
         // GET: Message

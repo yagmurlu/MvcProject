@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MvcProje.Controllers
 {
-    [Authorize(Users = "Admin")]
+    [Authorize]
     public class StatisticController : Controller
     {
         // GET: Statistic

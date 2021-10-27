@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MvcProje.Controllers
 {
-    [Authorize(Users = "Admin")]
+    [Authorize]
     public class ErrorPageController : Controller
     {
         // GET: ErrorPage

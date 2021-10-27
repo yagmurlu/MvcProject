@@ -262,15 +262,16 @@ div#word-mark h1 a {
 /*-- /header --*/
 
 .banner_section {
-    background: url(../images/banner.jpg) no-repeat 0px 0px;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    height: 50vw;
-    position: relative;
-    z-index: 0;
+  background: url(../images/tema.jpg) no-repeat 0px 0px;
+/*  background-image: url('../images/tema.jpg');*/
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  height: 50vw;
+  position: relative;
+  z-index: 0;
 }
 
 .banner-info {

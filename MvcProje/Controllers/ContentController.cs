@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MvcProje.Controllers
 {
-    [Authorize(Users = "Admin")]
+    [Authorize]
     public class ContentController : Controller
     {
         ContentManager cm = new ContentManager(new EfContentDal());
